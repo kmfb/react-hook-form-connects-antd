@@ -1,5 +1,9 @@
 lockfileVersion: 5.4
 
+overrides:
+  '@types/react': ^16.8.0
+  '@types/react-dom': ^16.8.0
+
 specifiers:
   '@babel/core': ^7.18.6
   '@rollup/plugin-commonjs': ^22.0.1
@@ -3403,25 +3407,17 @@ packages:
   /@types/react-slick/0.23.10:
     resolution: {integrity: sha512-ZiqdencANDZy6sWOWJ54LDvebuXFEhDlHtXU9FFipQR2BcYU2QJxZhvJPW6YK7cocibUiNn+YvDTbt1HtCIBVA==}
     dependencies:
-      '@types/react': 18.0.15
+      '@types/react': 16.14.28
     dev: true
 
   /@types/react-syntax-highlighter/11.0.5:
     resolution: {integrity: sha512-VIOi9i2Oj5XsmWWoB72p3KlZoEbdRAcechJa8Ztebw7bDl2YmR+odxIqhtJGp1q2EozHs02US+gzxJ9nuf56qg==}
     dependencies:
-      '@types/react': 18.0.15
+      '@types/react': 16.14.28
     dev: true
 
   /@types/react/16.14.28:
     resolution: {integrity: sha512-83zBE6+XUVXsdL3iFzOyUewdauaU+KviKCHEGOgSW52coAuqW7tEKQM0E9+ZC0Zk6TELQ2/JgogPvp7FavzFwg==}
-    dependencies:
-      '@types/prop-types': 15.7.5
-      '@types/scheduler': 0.16.2
-      csstype: 3.1.0
-    dev: true
-
-  /@types/react/18.0.15:
-    resolution: {integrity: sha512-iz3BtLuIYH1uWdsv6wXYdhozhqj20oD4/Hk2DNXIn1kFsmp9x8d9QB6FnPhfkbhd2PgEONt9Q1x/ebkwjfFLow==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2

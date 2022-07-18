@@ -4,7 +4,7 @@
   "author": "kmfb",
   "scripts": {
     "rollup": "rollup -c",
-    "storybook": "start-storybook -p 6006",
+    "sb": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "main": "dist/cjs/index.js",
@@ -44,8 +44,14 @@
     "antd": "3",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
+    "@types/react": "^16.8.0",
+    "@types/react-dom": "^16.8.0",
     "react-hook-form": "7",
     "typescript": "^4.7.4"
+  },
+  "resolutions": {
+    "@types/react": "^16.8.0",
+    "@types/react-dom": "^16.8.0"
   },
   "dependencies": {}
 }

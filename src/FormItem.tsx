@@ -1,23 +1,28 @@
-import React, { useRef, useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
-import { Form } from 'antd';
-import { useController, ControllerProps, ControllerFieldState } from 'react-hook-form';
+import React, { useRef, useEffect, useState } from "react";
+import ReactDOM from "react-dom";
+import { Form } from "antd";
+import {
+  useController,
+  ControllerProps,
+  ControllerFieldState,
+} from "react-hook-form";
 
-import { FormItemProps } from 'antd/es/form';
+import { FormItemProps } from "antd/es/form";
 
-import { isFalsy, warning } from './utils';
+import { isFalsy, warning } from "./utils";
 
-type ChildrenComponentType = 'select' | 'input' | '';
+type ChildrenComponentType = "select" | "input" | "";
 
 export interface HooksFormItemProps extends FormItemProps {
-  name: ControllerProps['name'];
-  control: ControllerProps<any>['control'];
-  rules?: ControllerProps['rules'];
+  name: ControllerProps["name"];
+  control: ControllerProps<any>["control"];
+  rules?: ControllerProps["rules"];
   labelText?: string;
-  defaultValue?: ControllerProps['defaultValue'];
+  defaultValue?: ControllerProps["defaultValue"];
   valuePropName?: string;
   trigger?: string;
   getValueFromEvent?: (event: any) => any;
+  hostUIValueState?: (value: any) => any;
 }
 
 // 如果直接赋值给 FormItem, 会导致 FormItem 里头 labelCol in props 的逻辑判断为 true， 从而使设置的布局未生效
@@ -25,28 +30,28 @@ const getLayoutProps = ({ labelAlign, labelCol, wrapperCol }: any) => {
   const layoutProps: any = {};
 
   if (labelAlign) {
-    layoutProps['labelAlign'] = labelAlign;
+    layoutProps["labelAlign"] = labelAlign;
   }
 
   if (labelCol) {
-    layoutProps['labelCol'] = labelCol;
+    layoutProps["labelCol"] = labelCol;
   }
 
   if (wrapperCol) {
-    layoutProps['wrapperCol'] = wrapperCol;
+    layoutProps["wrapperCol"] = wrapperCol;
   }
 
   return layoutProps;
 };
 
 const getRules = (
-  rules: ControllerProps['rules'],
-  options: { required?: boolean | string; label: string },
+  rules: ControllerProps["rules"],
+  options: { required?: boolean | string; label: string }
 ) => {
   let newRules = { ...rules };
 
   if (options?.required) {
-    if (typeof options?.required === 'string') {
+    if (typeof options?.required === "string") {
       newRules.required = options.required;
     } else {
       newRules.required = `${options?.label}不能为空`;
@@ -57,14 +62,14 @@ const getRules = (
 };
 
 const getValidateStatus = (fieldState: ControllerFieldState) => {
-  let validateStatus: FormItemProps['validateStatus'] = '';
+  let validateStatus: FormItemProps["validateStatus"] = "";
 
   if (fieldState?.error) {
-    validateStatus = 'error';
+    validateStatus = "error";
   }
 
   if (fieldState.isDirty && !fieldState?.error) {
-    validateStatus = 'success';
+    validateStatus = "success";
   }
 
   return validateStatus;
@@ -85,7 +90,7 @@ const getPlaceholder = ({
 }) => {
   if (!isFalsy(metadata?.props.placeholder)) return metadata?.props.placeholder;
 
-  if (componentType === 'select') {
+  if (componentType === "select") {
     return `请选择${labelText}`;
   }
 
@@ -106,11 +111,20 @@ const InternalFormItem: React.FC<HooksFormItemProps> = (props) => {
     required,
     hasFeedback,
     style,
-    valuePropName = 'value',
-    trigger = 'onChange',
+    valuePropName = "value",
+    trigger = "onChange",
     getValueFromEvent,
+    hostUIValueState,
     ...antdProps
   } = props;
+
+  const [UIValueState, setUIValueState] = useState(() => {
+    if (field) {
+      if (hostUIValueState) {
+        return hostUIValueState(field.value);
+      }
+    }
+  });
 
   /**
    * 为了解决在生产环境无法正确判断children的组件名称这个问题，
@@ -118,29 +132,30 @@ const InternalFormItem: React.FC<HooksFormItemProps> = (props) => {
    * 这边要注意不应该去设置 children的 ref，因为外部可能还会设置ref属性，所以这边通过设置 formitem 的 ref
    */
   const formItemRef = useRef();
-  const [childrenComponentType, setChildrenComponentType] = useState<ChildrenComponentType>('');
+  const [childrenComponentType, setChildrenComponentType] =
+    useState<ChildrenComponentType>("");
 
   const layoutProps = getLayoutProps({ labelCol, wrapperCol, labelAlign });
 
-  const isRequired = required || Object.keys(rules).includes('required');
+  const isRequired = required || Object.keys(rules).includes("required");
   const rulesProp = getRules(rules, { required, label: labelText as string });
 
   warning(
-    React.isValidElement(label) && typeof labelText !== 'string',
-    'label 被设置为 ReactElement, 请正确设置 labelText 为[纯文本 string]以保证校验提示本文的正确性',
+    React.isValidElement(label) && typeof labelText !== "string",
+    "label 被设置为 ReactElement, 请正确设置 labelText 为[纯文本 string]以保证校验提示本文的正确性"
   );
 
   useEffect(() => {
     const dom = ReactDOM.findDOMNode(formItemRef.current) as Element;
-    const selectNodelist = dom.querySelectorAll('.ant-select');
+    const selectNodelist = dom.querySelectorAll(".ant-select");
 
     switch (true) {
       case selectNodelist.length > 0:
-        setChildrenComponentType('select');
+        setChildrenComponentType("select");
         break;
 
       default:
-        setChildrenComponentType('');
+        setChildrenComponentType("");
         break;
     }
   }, []);
@@ -171,6 +186,11 @@ const InternalFormItem: React.FC<HooksFormItemProps> = (props) => {
 
       field.onChange(value);
 
+      if (hostUIValueState) {
+        const uValue = hostUIValueState(value);
+        setUIValueState(uValue);
+      }
+
       // @ts-expect-error
       if (props.children?.props?.[trigger]) {
         // @ts-expect-error
@@ -195,6 +215,9 @@ const InternalFormItem: React.FC<HooksFormItemProps> = (props) => {
         ...field,
         ...proxyProps,
         placeholder,
+        ...(hostUIValueState && {
+          value: UIValueState,
+        }),
       })}
     </Form.Item>
   );

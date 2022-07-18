@@ -1,5 +1,5 @@
-import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
-import React, { useState } from 'react';
+import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
+import React, { useState } from "react";
 
 import {
   Input,
@@ -17,37 +17,34 @@ import {
   Tooltip,
   Row,
   Col,
-} from 'antd';
-import { useForm, useFieldArray } from 'react-hook-form';
+} from "antd";
+import { useForm, useFieldArray } from "react-hook-form";
 // @ts-ignore
-import { Form, FormItem, PureFormItem, PlainText } from '../index';
-
-const formItemLayout = {
-  labelCol: {
-    span: 3,
-  },
-  wrapperCol: {
-    span: 21,
-  },
-};
+import { Form, FormItem, PureFormItem, PlainText } from "../../index";
+import { FORM_ITEM_LAYOUT } from "../constants";
 
 const Demo = () => {
   const [formValue, setFormValue] = useState({});
   const [showMethodTip, triggerMethodTip] = useState(false);
 
   const { control, handleSubmit } = useForm({
-    mode: 'onChange',
+    mode: "onChange",
   });
 
   const { fields, append, remove } = useFieldArray({
-    name: 'componentParams',
+    name: "componentParams",
     control,
   });
 
   return (
     <div>
-      <Form {...formItemLayout}>
-        <FormItem label="组件版本" name="componentVersion" control={control} defaultValue="1.0.0">
+      <Form {...FORM_ITEM_LAYOUT}>
+        <FormItem
+          label="组件版本"
+          name="componentVersion"
+          control={control}
+          defaultValue="1.0.0"
+        >
           <PlainText />
         </FormItem>
 
@@ -68,22 +65,32 @@ const Demo = () => {
           <Input placeholder="" />
         </FormItem>
 
-        <FormItem label="是否启用" name="enabled" control={control} valuePropName="checked">
+        <FormItem
+          label="是否启用"
+          name="enabled"
+          control={control}
+          valuePropName="checked"
+        >
           <Switch />
         </FormItem>
 
-        <FormItem label="组件类型" name="componentType" control={control} required>
+        <FormItem
+          label="组件类型"
+          name="componentType"
+          control={control}
+          required
+        >
           <Radio.Group
             options={[
-              { label: 'restful', value: 'restful' },
-              { label: 'webservice', value: 'webservice' },
-              { label: '页面', value: '页面' },
+              { label: "restful", value: "restful" },
+              { label: "webservice", value: "webservice" },
+              { label: "页面", value: "页面" },
             ]}
           />
         </FormItem>
 
         <PureFormItem label="调用地址" style={{ marginBottom: 0 }}>
-          <div style={{ display: 'flex' }}>
+          <div style={{ display: "flex" }}>
             <FormItem
               labelText="调用地址"
               name="address"
@@ -101,28 +108,34 @@ const Demo = () => {
           </div>
         </PureFormItem>
 
-  
-
         {showMethodTip && (
-          <FormItem label="注意" name="methodTip" control={control} defaultValue="你选择了POST方式">
+          <FormItem
+            label="注意"
+            name="methodTip"
+            control={control}
+            defaultValue="你选择了POST方式"
+          >
             <PlainText />
           </FormItem>
         )}
 
- 
-
-        <FormItem label="返回数据类型" name="responseType" control={control} required>
+        <FormItem
+          label="返回数据类型"
+          name="responseType"
+          control={control}
+          required
+        >
           <Radio.Group
             options={[
-              { label: 'json', value: 'json' },
-              { label: 'xml', value: 'xml' },
-              { label: 'text', value: 'text' },
+              { label: "json", value: "json" },
+              { label: "xml", value: "xml" },
+              { label: "text", value: "text" },
             ]}
           />
         </FormItem>
 
         <PureFormItem label="InputNumber" style={{ marginBottom: 0 }}>
-          <div style={{ display: 'flex' }}>
+          <div style={{ display: "flex" }}>
             <FormItem
               labelText="调用地址"
               name="input-number"
@@ -136,23 +149,26 @@ const Demo = () => {
           </div>
         </PureFormItem>
 
-   
-
         <FormItem label="Slider" name="Slider" control={control}>
           <Slider
             marks={{
-              0: 'A',
-              20: 'B',
-              40: 'C',
-              60: 'D',
-              80: 'E',
-              100: 'F',
+              0: "A",
+              20: "B",
+              40: "C",
+              60: "D",
+              80: "E",
+              100: "F",
             }}
           />
         </FormItem>
 
-        <FormItem label="Slider" name="Slider" control={control} defaultValue={['A', 'B']}>
-          <Checkbox.Group style={{ width: '100%' }}>
+        <FormItem
+          label="Slider"
+          name="Slider"
+          control={control}
+          defaultValue={["A", "B"]}
+        >
+          <Checkbox.Group style={{ width: "100%" }}>
             <Row>
               <Col span={8}>
                 <Checkbox value="A">A</Checkbox>
@@ -185,7 +201,7 @@ const Demo = () => {
           control={control}
           valuePropName="fileList"
           getValueFromEvent={(e: any) => {
-            console.log('Upload event:', e);
+            console.log("Upload event:", e);
             if (Array.isArray(e)) {
               return e;
             }
@@ -205,7 +221,7 @@ const Demo = () => {
           control={control}
           valuePropName="fileList"
           getValueFromEvent={(e: any) => {
-            console.log('Upload event:', e);
+            console.log("Upload event:", e);
             if (Array.isArray(e)) {
               return e;
             }
@@ -216,14 +232,20 @@ const Demo = () => {
             <p className="ant-upload-drag-icon">
               <Icon type="inbox" />
             </p>
-            <p className="ant-upload-text">Click or drag file to this area to upload</p>
-            <p className="ant-upload-hint">Support for a single or bulk upload.</p>
+            <p className="ant-upload-text">
+              Click or drag file to this area to upload
+            </p>
+            <p className="ant-upload-hint">
+              Support for a single or bulk upload.
+            </p>
           </Upload.Dragger>
         </FormItem>
 
         <PureFormItem wrapperCol={{ span: 21, offset: 3 }}>
           <p>表单值: {JSON.stringify(formValue)}</p>
-          <Button onClick={handleSubmit((data) => setFormValue(data))}>获取表单值</Button>
+          <Button onClick={handleSubmit((data) => setFormValue(data))}>
+            获取表单值
+          </Button>
         </PureFormItem>
       </Form>
     </div>

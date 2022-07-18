@@ -1,4 +1,6 @@
+import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import React, { useState } from 'react';
+
 import {
   Input,
   Select,
@@ -18,7 +20,7 @@ import {
 } from 'antd';
 import { useForm, useFieldArray } from 'react-hook-form';
 // @ts-ignore
-import { Form, FormItem, PureFormItem, PlainText } from 'react-hook-form-with-antd';
+import { Form, FormItem, PureFormItem, PlainText } from '../index';
 
 const formItemLayout = {
   labelCol: {
@@ -99,22 +101,7 @@ const Demo = () => {
           </div>
         </PureFormItem>
 
-        <FormItem
-          label="调用方式"
-          name="method"
-          control={control}
-          required
-          extra="表单控件也可以指定额外的 [triggerValue] 事件，比如这边额外指定了 Select 的 onChange 事件"
-        >
-          <Select
-            onChange={(val, a) => {
-              triggerMethodTip(val === 'POST');
-            }}
-          >
-            <Select.Option value="GET">GET</Select.Option>
-            <Select.Option value="POST">POST</Select.Option>
-          </Select>
-        </FormItem>
+  
 
         {showMethodTip && (
           <FormItem label="注意" name="methodTip" control={control} defaultValue="你选择了POST方式">
@@ -122,95 +109,7 @@ const Demo = () => {
           </FormItem>
         )}
 
-        <PureFormItem label="参数列表">
-          <Table bordered dataSource={fields} pagination={false} size="middle" rowKey="id">
-            <Table.Column
-              title="参数名称"
-              key="name"
-              render={(_, __, index) => (
-                <FormItem
-                  labelText="参数名称"
-                  name={`componentParams.${index}.name`}
-                  control={control}
-                  required
-                  style={{ marginBottom: 0 }}
-                >
-                  <Input />
-                </FormItem>
-              )}
-            />
-            <Table.Column
-              title="参数说明"
-              key="memo"
-              render={(_, __, index) => (
-                <FormItem
-                  labelText="参数说明"
-                  name={`componentParams.${index}.memo`}
-                  control={control}
-                  required
-                  style={{ marginBottom: 0 }}
-                >
-                  <Input />
-                </FormItem>
-              )}
-            />
-            <Table.Column
-              title="数据类型"
-              key="type"
-              width={120}
-              render={(_, __, index) => (
-                <FormItem
-                  labelText="数据类型"
-                  name={`componentParams.${index}.type`}
-                  control={control}
-                  required
-                  style={{ marginBottom: 0 }}
-                >
-                  <Select>
-                    <Select.Option value="Int">Int</Select.Option>
-                    <Select.Option value="Float">Float</Select.Option>
-                    <Select.Option value="Long">Long</Select.Option>
-                    <Select.Option value="String">String</Select.Option>
-                    <Select.Option value="Date">Date</Select.Option>
-                  </Select>
-                </FormItem>
-              )}
-            />
-            <Table.Column
-              title="默认值"
-              key="defaultValue"
-              render={(_, __, index) => (
-                <FormItem
-                  labelText="默认值"
-                  name={`componentParams.${index}.defaultValue`}
-                  control={control}
-                  required
-                  style={{ marginBottom: 0 }}
-                >
-                  <Input />
-                </FormItem>
-              )}
-            />
-            <Table.Column
-              title="操作"
-              key="action"
-              width={60}
-              align="center"
-              render={(_, __, index) => (
-                <a style={{ color: 'red' }} onClick={() => remove(index)}>
-                  删除
-                </a>
-              )}
-            />
-          </Table>
-
-          <Button
-            type="primary"
-            onClick={() => append({ name: '', memo: '', type: 'Int', defaultValue: '' })}
-          >
-            新增
-          </Button>
-        </PureFormItem>
+ 
 
         <FormItem label="返回数据类型" name="responseType" control={control} required>
           <Radio.Group
@@ -237,13 +136,7 @@ const Demo = () => {
           </div>
         </PureFormItem>
 
-        <FormItem label="Select[multiple]" name="select-multiple" control={control} required>
-          <Select mode="multiple" placeholder="Please select favourite colors">
-            <Select.Option value="red">Red</Select.Option>
-            <Select.Option value="green">Green</Select.Option>
-            <Select.Option value="blue">Blue</Select.Option>
-          </Select>
-        </FormItem>
+   
 
         <FormItem label="Slider" name="Slider" control={control}>
           <Slider

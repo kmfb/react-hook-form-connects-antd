@@ -1,13 +1,14 @@
 import { Button, Input, Select } from "antd";
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useFormContext } from "react-hook-form";
 import FormItem, { PureFormItem } from "../../FormItem";
+import CreateWrapper from "../components/CreateWrapper";
+import FormProviderWrapper from "../components/FormProviderWrapper";
+import FormValueDisplay from "../components/FormValueDisplay";
 const { Option } = Select;
 
 function HostUIValueState() {
-  const { control, handleSubmit } = useForm({
-    mode: "onChange",
-  });
+  const { control, handleSubmit } = useFormContext();
 
   const [formValue, setFormValue] = useState({});
 
@@ -33,14 +34,9 @@ function HostUIValueState() {
           <Option value="Yiminghe">yiminghe</Option>
         </Select>
       </FormItem>
-      <PureFormItem wrapperCol={{ span: 21, offset: 3 }}>
-        <p>表单值: {JSON.stringify(formValue)}</p>
-        <Button onClick={handleSubmit((data) => setFormValue(data))}>
-          获取表单值
-        </Button>
-      </PureFormItem>
+      <FormValueDisplay />
     </div>
   );
 }
 
-export default HostUIValueState;
+export default CreateWrapper(<HostUIValueState />);

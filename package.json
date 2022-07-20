@@ -1,6 +1,6 @@
 {
   "name": "@kmfb/react-hook-form-with-antd",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "author": "kmfb",
   "scripts": {
     "rollup": "rm -rf dist && rollup -c",

@@ -26,8 +26,9 @@ export default [
     ],
   },
   {
-    input: "dist/esm/types/index.d.ts",
+    input: "dist/esm/lib/index.d.ts",
     output: [{ file: packageJson.types, format: "esm" }],
     plugins: [dts()],
+    external: [/\.less$/u],
   },
 ];

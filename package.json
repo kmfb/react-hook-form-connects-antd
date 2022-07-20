@@ -3,7 +3,7 @@
   "version": "1.2.0",
   "author": "kmfb",
   "scripts": {
-    "rollup": "rollup -c",
+    "rollup": "rm -rf dist && rollup -c",
     "sb": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },

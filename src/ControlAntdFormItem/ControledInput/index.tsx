@@ -20,7 +20,7 @@ interface Props {
   customOnChange?: any;
 }
 
-function CustomInput(props: Props) {
+function ControledInput(props: Props) {
   const {
     control,
     name,
@@ -37,9 +37,14 @@ function CustomInput(props: Props) {
   } = props;
 
   const n = decorator ? `${decorator}#${name}` : name;
+  const hasTextDecorator = textPrefix || textCenter || textPost;
 
   return (
-    <div className={`CustomInput hookForm ${className ? className : ""}`}>
+    <div
+      className={`ControledInput hookForm ${className ? className : ""} ${
+        hasTextDecorator ? "textDecorator" : ""
+      }`}
+    >
       {textPrefix && <div className="text-prefix">{textPrefix}</div>}
 
       <FormItem
@@ -61,4 +66,4 @@ function CustomInput(props: Props) {
   );
 }
 
-export default CustomInput;
+export default ControledInput;

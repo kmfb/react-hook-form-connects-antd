@@ -3,7 +3,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import dts from "rollup-plugin-dts";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
-import less from "rollup-plugin-less";
+import styles from "rollup-plugin-styles";
 
 const packageJson = require("./package.json");
 
@@ -17,12 +17,13 @@ export default [
         // sourcemap: true,
       },
     ],
+    external: ["src/stories/*"],
     plugins: [
       peerDepsExternal(),
       resolve(),
       commonjs(),
+      styles(),
       typescript({ tsconfig: "./tsconfig.json" }),
-      less(),
     ],
   },
   {

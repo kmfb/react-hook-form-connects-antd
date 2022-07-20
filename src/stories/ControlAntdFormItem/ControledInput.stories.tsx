@@ -1,11 +1,11 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import CustomInput from "./CustomInput";
+import CustomInput from "./ControledInput";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "CustomHookForm/CustomInput",
+  title: "ControlAntdFormItem/ControledInput",
   component: CustomInput,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {

@@ -199,13 +199,19 @@ var PlainText = React.forwardRef(function (props, ref) {
     return (React.createElement("span", __assign({ ref: ref }, spanProps), value || (!hidePlaceholder && placeholder)));
 });
 
-function CustomInput(props) {
+var e=[],t=[];function n(n,r){if(n&&"undefined"!=typeof document){var a,s=!0===r.prepend?"prepend":"append",d=!0===r.singleTag,i="string"==typeof r.container?document.querySelector(r.container):document.getElementsByTagName("head")[0];if(d){var u=e.indexOf(i);-1===u&&(u=e.push(i)-1,t[u]={}),a=t[u]&&t[u][s]?t[u][s]:t[u][s]=c();}else a=c();65279===n.charCodeAt(0)&&(n=n.substring(1)),a.styleSheet?a.styleSheet.cssText+=n:a.appendChild(document.createTextNode(n));}function c(){var e=document.createElement("style");if(e.setAttribute("type","text/css"),r.attributes)for(var t=Object.keys(r.attributes),n=0;n<t.length;n++)e.setAttribute(t[n],r.attributes[t[n]]);var a="prepend"===s?"afterbegin":"beforeend";return i.insertAdjacentElement(a,e),e}}
+
+var css = ".ControledInput {\n  margin: 0;\n  width: fit-content;\n  display: flex;\n}\n.ControledInput .text-center {\n  margin: 0 5px;\n}\n.ControledInput .text-prefix {\n  margin-right: 5px;\n}\n.ControledInput .text-post {\n  margin-left: 5px;\n}\n.ControledInput .ant-form-item-label {\n  display: none;\n}\n.ControledInput.textDecorator {\n  align-items: center;\n}\n.ControledInput.textDecorator .ant-form-item {\n  margin: 0;\n}\n";
+n(css,{});
+
+function ControledInput(props) {
     var control = props.control, name = props.name, label = props.label, textPrefix = props.textPrefix, textCenter = props.textCenter, textPost = props.textPost, required = props.required, decorator = props.decorator, children = props.children, className = props.className, rules = props.rules, trigger = props.trigger;
     var n = decorator ? "".concat(decorator, "#").concat(name) : name;
-    return (React.createElement("div", { className: "CustomInput hookForm ".concat(className ? className : "") },
+    var hasTextDecorator = textPrefix || textCenter || textPost;
+    return (React.createElement("div", { className: "ControledInput hookForm ".concat(className ? className : "", " ").concat(hasTextDecorator ? "textDecorator" : "") },
         textPrefix && React.createElement("div", { className: "text-prefix" }, textPrefix),
         React.createElement(InternalFormItem, { label: label, required: required, name: n, control: control, rules: rules, trigger: trigger }, children ? children : React.createElement(Input, null)),
         (textCenter || textPost) && (React.createElement("div", { className: textCenter ? "text-center" : "text-post" }, textCenter ? textCenter : textPost))));
 }
 
-export { CustomInput, InternalFormItem as FormItem, PlainText, PureFormItem };
+export { ControledInput, InternalFormItem as FormItem, PlainText, PureFormItem };

@@ -1,0 +1,17 @@
+.CustomInput {
+  margin: 0;
+  width: fit-content;
+  display: flex;
+}
+.CustomInput .text-center {
+  margin: 0 5px;
+}
+.CustomInput .text-prefix {
+  margin-right: 5px;
+}
+.CustomInput .text-post {
+  margin-left: 5px;
+}
+.CustomInput .ant-form-item-label {
+  display: none;
+}

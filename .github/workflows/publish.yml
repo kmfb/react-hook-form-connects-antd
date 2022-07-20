@@ -4,7 +4,7 @@ name: Publish package to npm
 on:
   push:
     tags:
-      - v1.**
+      - v2.**
 
 jobs:
   # build is the job name (could be anything)

@@ -5,7 +5,8 @@
   "scripts": {
     "rollup": "rm -rf dist && rollup -c",
     "sb": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "bsd": "build-storybook --docs",
+    "sd": "start-storybook --docs --no-manager-cache"
   },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",

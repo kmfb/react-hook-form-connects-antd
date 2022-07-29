@@ -6,6 +6,12 @@
 
 ## 快速上手
 
+### 与react-hook-form-with-antd的区别
+1. 构建及文档测试工具修改为社区常用的rollup与storybook，减少了组件依赖，提高了配置易读、易用性，增加了组件测试功能。
+2. 增加了ControlAntdForm等组件，其对antd及react-hook-form进行了进一步封装，提高了易用性及封装性，增加代码复用性。
+3. 增加了github actions的CI/CD功能，发版流程更加便利，无缝。
+4. 使用pnpm作为包依赖管理工具，开发流程更加科学。
+
 ### 安装
 
 ```bash
@@ -15,40 +21,11 @@ yarn add @kmfb/react-hook-form-control-antd
 ### 使用
 
 ```jsx | pure
-import React from 'react';
-import { useForm } from 'react-hook-form';
-import { Input, Button } from 'antd';
-import { Form, FormItem, PureFormItem } from 'react-hook-form-with-antd';
-
-const App = () => {
-  const { control, handleSubmit } = useForm({
-    mode: 'onChange',
-  });
-
-  return (
-    <Form>
-      <FormItem
-        label="姓名"
-        name="name"
-        requried
-        control={control}
-        labelCol={{ span: 4 }}
-        wrapperCol={{ span: 20 }}
-      >
-        <Input />
-      </FormItem>
-      <PureFormItem wrapperCol={{ span: 20, offset: 4 }}>
-        <Button onClick={handleSubmit((data) => console.log('data', data))}>保存</Button>
-      </PureFormItem>
-    </Form>
-  );
-};
+参考文档
 ```
 
 ## 文档
 
-https://linewell-zwfed.github.io/react-hook-form-with-antd/
+https://kmfb.github.io/react-hook-form-control-antd/
 
-## 更新日志
 
-[CHANGELOG](/CHANGELOG.md)

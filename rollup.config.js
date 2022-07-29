@@ -1,7 +1,6 @@
 import typescript from "rollup-plugin-typescript2";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
-import dts from "rollup-plugin-dts";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import styles from "rollup-plugin-styles";
 
@@ -29,11 +28,5 @@ export default [
         exclude: ["**/__tests__", "**/*.test.ts"],
       }),
     ],
-  },
-  {
-    input: "dist/esm/lib/index.d.ts",
-    output: [{ file: packageJson.types, format: "esm" }],
-    plugins: [dts()],
-    external: [/\.less$/u],
   },
 ];

@@ -1,6 +1,6 @@
 import { Input } from "antd";
 import React from "react";
-import FormItem from "../../FormItem";
+import FormItem from "../../../FormItem";
 import "./index.less";
 
 interface Props {

@@ -2,7 +2,7 @@ import { Input } from "antd";
 import React from "react";
 import { useFormContext } from "react-hook-form";
 import { ControlAntdForm } from "../..";
-import { IItemsProps } from "../../ControlAntdForm";
+import { IItemsProps } from "../../types";
 
 import CreateWrapper from "../components/CreateWrapper";
 import FormValueDisplay from "../components/FormValueDisplay";

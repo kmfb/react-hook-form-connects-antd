@@ -3,3 +3,4 @@ export { default as FormItem, PureFormItem } from "./FormItem";
 
 export { default as PlainText } from "./PlainText";
 export { ControledInput } from "./ControlAntdFormItem/index";
+export { default as ControlAntdForm } from "./ControlAntdForm/index";

@@ -2,7 +2,7 @@ import { Input } from "antd";
 import React from "react";
 import { useFormContext } from "react-hook-form";
 import { ControlAntdForm } from "../..";
-import { IItemsProps } from "../../types";
+import { IControlAntdFormItems } from "../../types";
 
 import CreateWrapper from "../components/CreateWrapper";
 import FormValueDisplay from "../components/FormValueDisplay";
@@ -26,7 +26,7 @@ const UD_FORM_LAYOUT = {
   },
 };
 
-const items: IItemsProps = [
+const items: IControlAntdFormItems = [
   {
     label: "Name",
     name: "name",

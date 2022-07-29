@@ -3,7 +3,7 @@ import { ColProps } from "antd/lib/grid";
 import React from "react";
 import { ControllerProps } from "react-hook-form";
 import FormItem from "../../FormItem";
-import { IItemProps, IItemsProps } from "../../types";
+import { IControlAntdFormItem, IControlAntdFormItems } from "../../types";
 
 interface IProps {
   layout?: {
@@ -11,13 +11,13 @@ interface IProps {
     wrapperCol?: ColProps;
   };
   control: ControllerProps<any>["control"];
-  items: IItemsProps;
+  items: IControlAntdFormItems;
 }
 
 function index(props: IProps) {
   const { items, layout, control } = props;
 
-  const renderItem = (item: IItemProps) => {
+  const renderItem = (item: IControlAntdFormItem) => {
     const { children, ...rest } = item;
     return (
       <FormItem {...layout} {...rest} control={control}>
@@ -26,7 +26,9 @@ function index(props: IProps) {
     );
   };
 
-  return <Form>{items.map((item: IItemProps) => renderItem(item))}</Form>;
+  return (
+    <Form>{items.map((item: IControlAntdFormItem) => renderItem(item))}</Form>
+  );
 }
 
 export default index;

@@ -9,7 +9,7 @@ interface IProps {
   children: React.ReactElement;
   items: IControlAntdFormItems;
   control: ControllerProps<any>["control"];
-  handleModalOk: (handler: { setConfirmLoading: any }) => void;
+  handleModalOk: (handler: { setConfirmLoading: any; setVisible: any }) => void;
   modalConfig?: ModalProps;
 }
 
@@ -26,6 +26,7 @@ function index(props: IProps) {
   const handleOk = () => {
     handleModalOk({
       setConfirmLoading,
+      setVisible,
     });
   };
 

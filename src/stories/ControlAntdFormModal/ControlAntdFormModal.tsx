@@ -25,8 +25,9 @@ function ControlAntdFormModalS() {
       <ControlAntdFormModal
         control={control}
         items={items}
-        handleModalOk={({ setConfirmLoading }) => {
+        handleModalOk={({ setConfirmLoading, setVisible }) => {
           setConfirmLoading(true);
+          setVisible(false);
           console.log("handleModalOk");
         }}
         modalConfig={{

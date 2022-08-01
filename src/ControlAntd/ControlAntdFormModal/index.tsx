@@ -3,7 +3,9 @@ import { ModalProps } from "antd/lib/modal";
 import React, { useState } from "react";
 import { ControllerProps } from "react-hook-form";
 import { IControlAntdFormItems } from "../../types";
-import ControlAntdForm from "../ControlAntdForm";
+import ControlAntdForm, { ControlAntdFormProps } from "../ControlAntdForm";
+
+type PickedControlAntdFormProps = Pick<ControlAntdFormProps, "layout">;
 
 interface IProps {
   children: React.ReactElement;
@@ -11,10 +13,12 @@ interface IProps {
   control: ControllerProps<any>["control"];
   handleModalOk: (handler: { setConfirmLoading: any; setVisible: any }) => void;
   modalConfig?: ModalProps;
+  formConfig?: PickedControlAntdFormProps;
 }
 
 function index(props: IProps) {
-  const { children, control, items, handleModalOk, modalConfig } = props;
+  const { children, control, items, handleModalOk, modalConfig, formConfig } =
+    props;
 
   const [visible, setVisible] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
@@ -42,7 +46,7 @@ function index(props: IProps) {
         cancelText={"取消"}
         {...modalConfig}
       >
-        <ControlAntdForm control={control} items={items} />
+        <ControlAntdForm control={control} items={items} {...formConfig} />
       </Modal>
     </div>
   );

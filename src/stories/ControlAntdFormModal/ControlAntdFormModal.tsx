@@ -7,6 +7,15 @@ import { IControlAntdFormItems } from "../../types";
 import CreateWrapper from "../components/CreateWrapper";
 import FormValueDisplay from "../components/FormValueDisplay";
 
+const UD_FORM_LAYOUT_MODAL = {
+  labelCol: {
+    md: 8,
+  },
+  wrapperCol: {
+    md: 12,
+  },
+};
+
 const items: IControlAntdFormItems = [
   {
     label: "Name",
@@ -32,6 +41,9 @@ function ControlAntdFormModalS() {
         }}
         modalConfig={{
           title: "模板名称",
+        }}
+        formConfig={{
+          layout: UD_FORM_LAYOUT_MODAL,
         }}
       >
         <Button>点击</Button>

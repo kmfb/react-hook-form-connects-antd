@@ -6,7 +6,7 @@ import FormItem from "../../FormItem";
 import { IControlAntdFormItem, IControlAntdFormItems } from "../../types";
 import { UD_FORM_LAYOUT } from "./constants";
 
-interface IProps {
+export interface ControlAntdFormProps {
   layout?: {
     labelCol?: ColProps;
     wrapperCol?: ColProps;
@@ -15,7 +15,7 @@ interface IProps {
   items: IControlAntdFormItems;
 }
 
-function index(props: IProps) {
+function index(props: ControlAntdFormProps) {
   const { items, layout = UD_FORM_LAYOUT, control } = props;
 
   const renderItem = (item: IControlAntdFormItem) => {

@@ -2,5 +2,8 @@ export * from "./types";
 export { default as Form } from "./Form";
 export { default as FormItem, PureFormItem } from "./FormItem";
 export { default as PlainText } from "./PlainText";
-export { ControledInput } from "./ControlAntd/ControlAntdFormItem/index";
-export { default as ControlAntdForm } from "./ControlAntd/ControlAntdForm/index";
+export {
+  ControledInput,
+  ControlAntdForm,
+  ControlAntdFormModal,
+} from "./ControlAntd/index";

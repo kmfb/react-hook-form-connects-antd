@@ -4,6 +4,7 @@ import React from "react";
 import { ControllerProps } from "react-hook-form";
 import FormItem from "../../FormItem";
 import { IControlAntdFormItem, IControlAntdFormItems } from "../../types";
+import { UD_FORM_LAYOUT } from "./constants";
 
 interface IProps {
   layout?: {
@@ -15,7 +16,7 @@ interface IProps {
 }
 
 function index(props: IProps) {
-  const { items, layout, control } = props;
+  const { items, layout = UD_FORM_LAYOUT, control } = props;
 
   const renderItem = (item: IControlAntdFormItem) => {
     const { children, ...rest } = item;

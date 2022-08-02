@@ -27,12 +27,12 @@ const items: IControlAntdFormItems = [
 ];
 
 function ControlAntdFormModalS() {
-  const { control } = useFormContext();
+  const methods = useFormContext();
 
   return (
     <div>
       <ControlAntdFormModal
-        control={control}
+        methods={methods}
         items={items}
         handleModalOk={({ setConfirmLoading, setVisible }) => {
           setConfirmLoading(true);
@@ -41,6 +41,7 @@ function ControlAntdFormModalS() {
         }}
         modalConfig={{
           title: "模板名称",
+          destroyOnClose: true,
         }}
         formConfig={{
           layout: UD_FORM_LAYOUT_MODAL,

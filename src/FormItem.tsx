@@ -118,13 +118,7 @@ const InternalFormItem: React.FC<HooksFormItemProps> = (props) => {
     ...antdProps
   } = props;
 
-  const [UIValueState, setUIValueState] = useState(() => {
-    if (field) {
-      if (hostUIValueState) {
-        return hostUIValueState(field.value);
-      }
-    }
-  });
+
 
   /**
    * 为了解决在生产环境无法正确判断children的组件名称这个问题，
@@ -165,6 +159,14 @@ const InternalFormItem: React.FC<HooksFormItemProps> = (props) => {
     control,
     rules: rulesProp,
     defaultValue,
+  });
+
+  const [UIValueState, setUIValueState] = useState(() => {
+    if (field) {
+      if (hostUIValueState) {
+        return hostUIValueState(field.value);
+      }
+    }
   });
 
   const validateStatus = getValidateStatus(fieldState);

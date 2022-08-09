@@ -21,7 +21,7 @@ function index(props: ControlAntdFormProps) {
   const renderItem = (item: IControlAntdFormItem) => {
     const { children, ...rest } = item;
     return (
-      <FormItem {...layout} {...rest} control={control}>
+      <FormItem {...layout} {...rest} control={control} key={rest.name}>
         {item.children || <Input />}
       </FormItem>
     );

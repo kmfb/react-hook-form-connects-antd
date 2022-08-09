@@ -1,6 +1,6 @@
 {
   "name": "@kmfb/react-hook-form-control-antd",
-  "version": "2.1.10-beta",
+  "version": "2.1.10",
   "author": "kmfb",
   "homepage": "https://kmfb.github.io/react-hook-form-control-antd/",
   "scripts": {

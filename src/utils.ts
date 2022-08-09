@@ -23,3 +23,7 @@ export const warning = (isTruthy: boolean, ...params: any[]) => {
     console.warn(...params);
   }
 };
+
+export const isString = (value: unknown) => {
+  return typeof value === "string"
+}

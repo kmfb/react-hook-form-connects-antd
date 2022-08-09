@@ -1,4 +1,5 @@
 import React from 'react';
+import { isString } from './utils';
 
 export interface IProps extends React.HTMLAttributes<HTMLSpanElement> {
   value?: string;
@@ -8,9 +9,11 @@ export interface IProps extends React.HTMLAttributes<HTMLSpanElement> {
 const PlainText = React.forwardRef<any, IProps>((props, ref) => {
   const { value, hidePlaceholder = false, placeholder = '-', ...spanProps } = props;
 
+  const displayValue = isString(value) ? value : value ? JSON.stringify(value) : undefined;
+
   return (
     <span ref={ref} {...spanProps}>
-      {value || (!hidePlaceholder && placeholder)}
+      {displayValue || (!hidePlaceholder && placeholder)}
     </span>
   );
 });

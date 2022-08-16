@@ -1,9 +1,8 @@
 import React from "react";
 import { useFormContext } from "react-hook-form";
-import { ControledInput } from "../..";
+import { ControledInput, FormValueDisplay } from "../..";
 
 import CreateWrapper from "../components/CreateWrapper";
-import FormValueDisplay from "../components/FormValueDisplay";
 
 function ControledInputS() {
   const { control } = useFormContext();

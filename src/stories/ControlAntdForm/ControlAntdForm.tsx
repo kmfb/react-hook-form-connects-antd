@@ -1,11 +1,10 @@
 import { Input } from "antd";
 import React from "react";
 import { useFormContext } from "react-hook-form";
-import { ControlAntdForm } from "../..";
+import { ControlAntdForm, FormValueDisplay } from "../..";
 import { IControlAntdFormItems } from "../../types";
 
 import CreateWrapper from "../components/CreateWrapper";
-import FormValueDisplay from "../components/FormValueDisplay";
 
 const UD_FORM_LAYOUT = {
   labelCol: {

@@ -48,6 +48,25 @@ function ControlAntdFormModalS() {
       >
         <Button>点击</Button>
       </ControlAntdFormModal>
+      <ControlAntdFormModal
+        methods={methods}
+        items={items}
+        handleModalOk={({ setConfirmLoading, setVisible }) => {
+          setConfirmLoading(true);
+          setVisible(false);
+          console.log("handleModalOk");
+        }}
+        modalConfig={{
+          title: "模板名称",
+          destroyOnClose: true,
+        }}
+        formConfig={{
+          layout: UD_FORM_LAYOUT_MODAL,
+        }}
+        modalChildren={<div>hello</div>}
+      >
+        <Button>点击</Button>
+      </ControlAntdFormModal>
       <FormValueDisplay />
     </div>
   );

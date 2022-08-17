@@ -13,12 +13,14 @@ type PickedControlAntdFormProps = Pick<ControlAntdFormProps, "layout">;
 
 interface IProps {
   children: React.ReactElement;
-  items: IControlAntdFormItems;
+  modalChildren?: React.ReactElement;
+  items?: IControlAntdFormItems;
   methods: UseFormReturn;
   handleModalOk: (handler: { setConfirmLoading: any; setVisible: any, clearStatus: any }) => void;
   preserve?: boolean;
   modalConfig?: ModalProps;
   formConfig?: PickedControlAntdFormProps;
+
 }
 
 function index(props: IProps) {
@@ -30,6 +32,7 @@ function index(props: IProps) {
     modalConfig,
     formConfig,
     preserve = false,
+    modalChildren,
   } = props;
 
   const { control, reset } = methods;
@@ -79,7 +82,7 @@ function index(props: IProps) {
         cancelText={"取消"}
         {...modalConfig}
       >
-        <ControlAntdForm control={control} items={items} {...formConfig} />
+        {modalChildren || <ControlAntdForm control={control} items={items as any} {...formConfig} />}
       </Modal>
     </div>
   );

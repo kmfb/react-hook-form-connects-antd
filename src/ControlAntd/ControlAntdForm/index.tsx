@@ -19,10 +19,16 @@ function index(props: ControlAntdFormProps) {
   const { items, layout = UD_FORM_LAYOUT, control } = props;
 
   const renderItem = (item: IControlAntdFormItem) => {
-    const { children, ...rest } = item;
+    const { children, childrenProps, ...rest } = item;
+
+    const childrenWithProps = children ? React.cloneElement(children, {
+      ...childrenProps,
+    }) : null;
+
+
     return (
       <FormItem {...layout} {...rest} control={control} key={rest.name}>
-        {item.children || <Input />}
+        {childrenWithProps || <Input {...childrenProps} />}
       </FormItem>
     );
   };

@@ -14,6 +14,11 @@ function HostUIValueState() {
   const [formValue, setFormValue] = useState({});
 
   const hostUIValueState = (v: any) => {
+
+    if (v === null || v === undefined) {
+      return undefined;
+    }
+
     return v.slice(1);
   };
 

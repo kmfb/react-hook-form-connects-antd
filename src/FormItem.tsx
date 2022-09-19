@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import { Form } from "antd";
+import { Form, Spin } from "antd";
 import {
   useController,
   ControllerProps,
@@ -23,6 +23,7 @@ export interface HooksFormItemProps extends FormItemProps {
   trigger?: string;
   getValueFromEvent?: (event: any) => any;
   hostUIValueState?: (value: any) => any;
+  loading?: boolean;
 }
 
 // 如果直接赋值给 FormItem, 会导致 FormItem 里头 labelCol in props 的逻辑判断为 true， 从而使设置的布局未生效
@@ -115,10 +116,9 @@ const InternalFormItem: React.FC<HooksFormItemProps> = (props) => {
     trigger = "onChange",
     getValueFromEvent,
     hostUIValueState,
+    loading = false,
     ...antdProps
   } = props;
-
-
 
   /**
    * 为了解决在生产环境无法正确判断children的组件名称这个问题，
@@ -201,7 +201,7 @@ const InternalFormItem: React.FC<HooksFormItemProps> = (props) => {
     },
   };
 
-  return (
+  const FormItemInner = (
     <Form.Item
       {...antdProps}
       label={label}
@@ -223,6 +223,8 @@ const InternalFormItem: React.FC<HooksFormItemProps> = (props) => {
       })}
     </Form.Item>
   );
+
+  return loading ? <Spin>{FormItemInner}</Spin> : FormItemInner;
 };
 
 export const PureFormItem = Form.Item;

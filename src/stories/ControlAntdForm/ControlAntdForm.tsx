@@ -32,7 +32,9 @@ const items: IControlAntdFormItems = [
     rules: {
       maxLength: { value: 10, message: "模板名称字符长度不能超过10个" },
     },
-    loading: true,
+    children: <Input placeholder="请输入模板名称" onBlur={(e) => {
+      console.log('onBlur', e.target.value)
+    }} />,
   },
   {
     label: "age",

@@ -177,7 +177,7 @@ const InternalFormItem: React.FC<HooksFormItemProps> = (props) => {
     labelText: labelText as string,
   });
 
-  const proxyProps = {
+  const defaultProxyProps = {
     [valuePropName]: field.value,
     [trigger](event: any) {
       let value = event;
@@ -201,6 +201,26 @@ const InternalFormItem: React.FC<HooksFormItemProps> = (props) => {
     },
   };
 
+  const getProxyProps = () => {
+    if (!props.children) {
+      return defaultProxyProps;
+    }
+    // @ts-expect-error
+    if (!props.children.props) {
+      return defaultProxyProps;
+    }
+    // @ts-expect-error
+    if (props.children.props["onBlur"]) {
+      return {
+        ...defaultProxyProps,
+        // @ts-expect-error
+        onBlur: props.children.props["onBlur"],
+      };
+    }
+
+    return defaultProxyProps;
+  };
+
   const FormItemInner = (
     <Form.Item
       {...antdProps}
@@ -215,7 +235,7 @@ const InternalFormItem: React.FC<HooksFormItemProps> = (props) => {
     >
       {React.cloneElement(props.children as React.ReactElement, {
         ...field,
-        ...proxyProps,
+        ...getProxyProps(),
         placeholder,
         ...(hostUIValueState && {
           value: UIValueState,

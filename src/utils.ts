@@ -1,4 +1,7 @@
 export const isDEV = () => {
+
+  if (!process) return false;
+
   // @ts-ignore
   if (!process?.env?.NODE_ENV) return false;
 

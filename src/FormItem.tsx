@@ -9,7 +9,7 @@ import {
 
 import { FormItemProps } from "antd/es/form";
 
-import { isFalsy, warning } from "./utils";
+import { isFalsy } from "./utils";
 
 type ChildrenComponentType = "select" | "input" | "";
 
@@ -133,11 +133,6 @@ const InternalFormItem: React.FC<HooksFormItemProps> = (props) => {
 
   const isRequired = required || Object.keys(rules).includes("required");
   const rulesProp = getRules(rules, { required, label: labelText as string });
-
-  warning(
-    React.isValidElement(label) && typeof labelText !== "string",
-    "label 被设置为 ReactElement, 请正确设置 labelText 为[纯文本 string]以保证校验提示本文的正确性"
-  );
 
   useEffect(() => {
     const dom = ReactDOM.findDOMNode(formItemRef.current) as Element;

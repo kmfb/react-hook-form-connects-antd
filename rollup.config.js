@@ -3,6 +3,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import styles from "rollup-plugin-styles";
+import injectProcessEnv from "rollup-plugin-inject-process-env";
 
 const packageJson = require("./package.json");
 
@@ -26,6 +27,9 @@ export default [
         tsconfig: "./tsconfig.json",
         clean: true,
         exclude: ["**/__tests__", "**/*.test.ts"],
+      }),
+      injectProcessEnv({
+        NODE_ENV: "production",
       }),
     ],
   },

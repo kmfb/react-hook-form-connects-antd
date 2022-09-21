@@ -136,6 +136,9 @@ const InternalFormItem: React.FC<HooksFormItemProps> = (props) => {
 
   useEffect(() => {
     const dom = ReactDOM.findDOMNode(formItemRef.current) as Element;
+    if (!dom) {
+      return () => {}
+    }
     const selectNodelist = dom.querySelectorAll(".ant-select");
 
     switch (true) {

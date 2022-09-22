@@ -9,9 +9,9 @@ interface Props {
   children?: any;
   required?: boolean;
   label?: string;
-  textPrefix?: any;
-  textCenter?: string;
-  textPost?: string;
+  textPrefix?: string | React.ReactElement;
+  textCenter?: string | React.ReactElement;
+  textPost?: string | React.ReactElement;
   decorator?: string;
   className?: string;
   rules?: any;

@@ -7,5 +7,6 @@ export {
   ControledInput,
   ControlAntdForm,
   ControlAntdFormModal,
+  controlAntdUtils,
 } from "./ControlAntd/index";
 

@@ -1,11 +1,10 @@
 import { Input } from "antd";
 import React from "react";
 import { useFormContext } from "react-hook-form";
-import { ControlAntdForm, FormValueDisplay } from "../..";
-import { controlAntdUtils } from "../../";
-import { IControlAntdFormItems } from "../../types";
-
-import CreateWrapper from "../components/CreateWrapper";
+import { ControlAntdForm, controlAntdUtils } from "../../../ControlAntd";
+import FormValueDisplay from "../../../FormValueDisplay";
+import { IControlAntdFormItems } from "../../../types";
+import CreateWrapper from "../../components/CreateWrapper";
 
 const UD_FORM_LAYOUT = {
   labelCol: {
@@ -52,12 +51,14 @@ const items: IControlAntdFormItems = [
 function ControlAntdFormS() {
   const { control } = useFormContext();
 
+  const finalItems = controlAntdUtils.getFormItemsWithRequired(items, ['name'])
+
   return (
     <div>
       <ControlAntdForm
         control={control}
         layout={UD_FORM_LAYOUT}
-        items={items}
+        items={finalItems}
       />
       <FormValueDisplay />
     </div>

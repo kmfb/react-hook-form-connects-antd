@@ -1,11 +1,11 @@
 import { Button, Input, Select } from "antd";
 import React, { useState } from "react";
 import { useForm, useFormContext } from "react-hook-form";
-import { FormValueDisplay } from "../..";
-import FormItem, { PureFormItem } from "../../FormItem";
+import { FormValueDisplay } from "../../..";
+import FormItem, { PureFormItem } from "../../../FormItem";
 
-import CreateWrapper from "../components/CreateWrapper";
-import FormProviderWrapper from "../components/FormProviderWrapper";
+import CreateWrapper from "../../components/CreateWrapper";
+import FormProviderWrapper from "../../components/FormProviderWrapper";
 const { Option } = Select;
 
 function HostUIValueState() {
@@ -25,11 +25,11 @@ function HostUIValueState() {
   return (
     <div>
       <FormItem
-        label={"组件名称"}
-        name="componentName"
+        label={"加载中"}
+        name="componentNameLoading"
         control={control}
         required
-        hostUIValueState={hostUIValueState}
+        loading={true}
       >
         <Select defaultValue="lucy" style={{ width: 120 }}>
           <Option value="jack">Jack</Option>
@@ -39,6 +39,15 @@ function HostUIValueState() {
           </Option>
           <Option value="Yiminghe">yiminghe</Option>
         </Select>
+      </FormItem>
+      <FormItem
+        label={"组件名称"}
+        name="componentName"
+        control={control}
+        required
+    
+      >
+        <Input />
       </FormItem>
       <FormValueDisplay />
     </div>

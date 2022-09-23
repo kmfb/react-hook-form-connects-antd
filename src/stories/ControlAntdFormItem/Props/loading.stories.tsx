@@ -1,12 +1,12 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import HostUIValueState from "./hostUIValueState";
+import Loading from "./loading";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "Props/hostUIValueState",
-  component: HostUIValueState,
+  title: "ControlAntdFormItem/Props/loading",
+  component: Loading,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
     backgroundColor: { control: "color" },
@@ -14,7 +14,7 @@ export default {
 } as ComponentMeta<any>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<any> = (args) => <HostUIValueState {...args} />;
+const Template: ComponentStory<any> = (args) => <Loading {...args} />;
 
 export const Index = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args

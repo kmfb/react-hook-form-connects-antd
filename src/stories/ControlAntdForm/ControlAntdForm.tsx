@@ -40,6 +40,13 @@ const items: IControlAntdFormItems = [
   {
     label: "age",
     name: "age",
+    children: (item) => {
+      console.log(item, 'im item')
+      return <Input />
+    },
+    childrenProps: {
+      disabled: true
+    }
   },
   {
     label: "address",

@@ -1,12 +1,20 @@
+import { JSXElementConstructor, ReactElement } from "react";
 import { HooksFormItemProps } from "../FormItem";
 
-type IOmitHooksFormItemProps = Omit<HooksFormItemProps, "control">;
+export type IOmitHooksFormItemProps = Omit<HooksFormItemProps, "control">;
+export type IControlAntdFormItemChildren =
+  | ReactElement<any, string | JSXElementConstructor<any>>
+  | ((
+      item: IControlAntdFormItem
+    ) => ReactElement<any, string | JSXElementConstructor<any>>);
+
+export type IChildrenProps = {
+  disabled?: boolean;
+};
 
 export interface IControlAntdFormItem extends IOmitHooksFormItemProps {
-  children?: React.ReactElement;
-  childrenProps?: {
-    disabled?: boolean;
-  };
+  children?: IControlAntdFormItemChildren;
+  childrenProps?: IChildrenProps;
 }
 
 export type IControlAntdFormItems = Array<IControlAntdFormItem>;

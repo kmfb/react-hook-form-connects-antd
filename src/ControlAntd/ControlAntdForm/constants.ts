@@ -16,3 +16,12 @@ export const UD_FORM_LAYOUT = {
     xxl: 12,
   },
 };
+
+export const UD_FORM_LAYOUT_MODAL = {
+  labelCol: {
+    md: 8,
+  },
+  wrapperCol: {
+    md: 12,
+  },
+};

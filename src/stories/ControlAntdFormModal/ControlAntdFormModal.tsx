@@ -42,9 +42,7 @@ function ControlAntdFormModalS() {
           title: "模板名称",
           destroyOnClose: true,
         }}
-        formConfig={{
-          layout: UD_FORM_LAYOUT_MODAL,
-        }}
+      
       >
         <Button>点击</Button>
       </ControlAntdFormModal>

@@ -8,6 +8,7 @@ import {
 } from "react-hook-form";
 import { IControlAntdFormItems } from "../../types";
 import ControlAntdForm, { ControlAntdFormProps } from "../ControlAntdForm";
+import { UD_FORM_LAYOUT_MODAL } from "../ControlAntdForm/constants";
 
 type PickedControlAntdFormProps = Pick<ControlAntdFormProps, "layout">;
 
@@ -34,6 +35,11 @@ function index(props: IProps) {
     preserve = false,
     modalChildren,
   } = props;
+
+  const finalFormConfig: PickedControlAntdFormProps = {
+    layout: UD_FORM_LAYOUT_MODAL,
+    ...formConfig
+  }
 
   const { control, reset } = methods;
 
@@ -82,7 +88,7 @@ function index(props: IProps) {
         cancelText={"取消"}
         {...modalConfig}
       >
-        {modalChildren || <ControlAntdForm control={control} items={items as any} {...formConfig} />}
+        {modalChildren || <ControlAntdForm control={control} items={items as any} {...finalFormConfig} />}
       </Modal>
     </div>
   );

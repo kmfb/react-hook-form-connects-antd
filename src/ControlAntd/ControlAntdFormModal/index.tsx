@@ -6,6 +6,7 @@ import {
   useFormContext,
   UseFormReturn,
 } from "react-hook-form";
+import FormValueDisplay from "../../FormValueDisplay";
 import { IControlAntdFormItems } from "../../types";
 import ControlAntdForm, { ControlAntdFormProps } from "../ControlAntdForm";
 import { UD_FORM_LAYOUT_MODAL } from "../ControlAntdForm/constants";
@@ -21,7 +22,7 @@ interface IProps {
   preserve?: boolean;
   modalConfig?: ModalProps;
   formConfig?: PickedControlAntdFormProps;
-
+  isDev?: boolean;
 }
 
 function index(props: IProps) {
@@ -34,6 +35,7 @@ function index(props: IProps) {
     formConfig,
     preserve = false,
     modalChildren,
+    isDev = false,
   } = props;
 
   const finalFormConfig: PickedControlAntdFormProps = {
@@ -89,6 +91,7 @@ function index(props: IProps) {
         {...modalConfig}
       >
         {modalChildren || <ControlAntdForm control={control} items={items as any} {...finalFormConfig} />}
+        {isDev && <FormValueDisplay />}
       </Modal>
     </div>
   );

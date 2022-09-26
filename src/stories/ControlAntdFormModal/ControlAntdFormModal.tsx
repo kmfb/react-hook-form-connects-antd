@@ -33,6 +33,7 @@ function ControlAntdFormModalS() {
       <ControlAntdFormModal
         methods={methods}
         items={items}
+        isDev
         handleModalOk={({ setConfirmLoading, setVisible }) => {
           setConfirmLoading(true);
           setVisible(false);

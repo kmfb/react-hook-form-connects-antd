@@ -3,6 +3,7 @@ import { ModalProps } from "antd/lib/modal";
 import React, { useState } from "react";
 import {
   ControllerProps,
+  FormProvider,
   useFormContext,
   UseFormReturn,
 } from "react-hook-form";
@@ -80,19 +81,22 @@ function index(props: IProps) {
 
   return (
     <div>
+     
       <div>{clonedChildren}</div>
-      <Modal
-        visible={visible}
-        onCancel={handleCancel}
-        onOk={handleOk}
-        confirmLoading={confirmLoading}
-        okText={"确定"}
-        cancelText={"取消"}
-        {...modalConfig}
-      >
-        {modalChildren || <ControlAntdForm control={control} items={items as any} {...finalFormConfig} />}
-        {isDev && <FormValueDisplay />}
-      </Modal>
+      <FormProvider {...methods}>
+        <Modal
+          visible={visible}
+          onCancel={handleCancel}
+          onOk={handleOk}
+          confirmLoading={confirmLoading}
+          okText={"确定"}
+          cancelText={"取消"}
+          {...modalConfig}
+        >
+          {modalChildren || <ControlAntdForm control={control} items={items as any} {...finalFormConfig} />}
+          {isDev && <FormValueDisplay />}
+        </Modal>
+      </FormProvider>
     </div>
   );
 }

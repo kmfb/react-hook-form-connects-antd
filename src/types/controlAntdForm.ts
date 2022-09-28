@@ -5,7 +5,7 @@ export type IOmitHooksFormItemProps = Omit<HooksFormItemProps, 'control'>;
 export type IControlAntdFormItemChildren =
   | ReactElement<any, string | JSXElementConstructor<any>>
   | ((
-      item: IControlAntdFormItem
+      _item: IControlAntdFormItem
     ) => ReactElement<any, string | JSXElementConstructor<any>>);
 
 export type IChildrenProps = {

@@ -19,8 +19,8 @@ export interface HooksFormItemProps extends FormItemProps {
   defaultValue?: ControllerProps['defaultValue'];
   valuePropName?: string;
   trigger?: string;
-  getValueFromEvent?: (event: any) => any;
-  hostUIValueState?: (value: any) => any;
+  getValueFromEvent?: (_event: any) => any;
+  hostUIValueState?: (_value: any) => any;
   loading?: boolean;
 }
 

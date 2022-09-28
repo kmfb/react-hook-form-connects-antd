@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import {
-  ControllerProps,
-  FormProvider,
-  useFormContext,
-  UseFormReturn,
-} from 'react-hook-form';
+import { FormProvider, UseFormReturn } from 'react-hook-form';
 import { Modal } from 'antd';
 import { ModalProps } from 'antd/lib/modal';
 import FormValueDisplay from '../../FormValueDisplay';
@@ -19,7 +14,7 @@ interface IProps {
   modalChildren?: React.ReactElement;
   items?: IControlAntdFormItems;
   methods: UseFormReturn;
-  handleModalOk: (handler: {
+  handleModalOk: (_handler: {
     setConfirmLoading: any;
     setVisible: any;
     clearStatus: any;
@@ -30,7 +25,7 @@ interface IProps {
   isDev?: boolean;
 }
 
-function index(props: IProps) {
+function Index(props: IProps) {
   const {
     children,
     methods,
@@ -110,4 +105,4 @@ function index(props: IProps) {
   );
 }
 
-export default index;
+export default Index;

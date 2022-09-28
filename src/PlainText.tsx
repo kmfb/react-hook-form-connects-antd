@@ -4,7 +4,7 @@ import { isString } from './utils';
 export interface IProps extends React.HTMLAttributes<HTMLSpanElement> {
   value?: string | undefined;
   hidePlaceholder?: boolean;
-  getDisplayValue?: (value: string | undefined) => string;
+  getDisplayValue?: (_value: string | undefined) => string;
 }
 
 const defaultGetDisplayValue = (value: string | undefined) =>

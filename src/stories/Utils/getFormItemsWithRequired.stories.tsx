@@ -4,12 +4,7 @@ import { ControlAntdForm, controlAntdUtils } from '../../ControlAntd';
 import { IControlAntdFormItems } from '../../types';
 import { UD_FORM_LAYOUT } from '../constants';
 
-export default {
-  title: 'Utils/getFormItemsWithRequired',
-  component: ControlAntdForm,
-};
-
-export const index = () => {
+export const Index = () => {
   const items: IControlAntdFormItems = [
     {
       label: 'Name',
@@ -37,4 +32,8 @@ export const index = () => {
       />
     </div>
   );
+};
+export default {
+  title: 'Utils/getFormItemsWithRequired',
+  component: ControlAntdForm,
 };

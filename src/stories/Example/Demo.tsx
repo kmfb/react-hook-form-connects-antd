@@ -11,10 +11,8 @@ import {
   Radio,
   Rate,
   Row,
-  Select,
   Slider,
   Switch,
-  Table,
   Tooltip,
   Upload,
 } from 'antd';
@@ -25,13 +23,13 @@ import { FORM_ITEM_LAYOUT } from '../constants';
 
 const Demo = () => {
   const [formValue, setFormValue] = useState({});
-  const [showMethodTip, triggerMethodTip] = useState(false);
+  const [showMethodTip, ignoredT] = useState(false);
 
   const { control, handleSubmit } = useForm({
     mode: 'onChange',
   });
 
-  const { fields, append, remove } = useFieldArray({
+  const ignoredM = useFieldArray({
     name: 'componentParams',
     control,
   });

@@ -1,24 +1,34 @@
-import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { ControledInput } from '../../ControlAntd';
 
-import CustomInput from "./ControledInput";
+export const Basic: ComponentStory<any> = () => {
+  // import React from "react";
+  // import { useForm } from "react-hook-form";
+  // import { ControledInput } from "../../ControlAntd";
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
-  title: "ControlAntdFormItem/ControledInput",
-  component: CustomInput,
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
-  argTypes: {
-    backgroundColor: { control: "color" },
-  },
-} as ComponentMeta<any>;
+  const { control } = useForm();
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<any> = (args) => <CustomInput {...args} />;
-
-export const Index = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Index.args = {
-  primary: true,
-  label: "Demo",
+  return (
+    <div>
+      <div>
+        <ControledInput label="测试" name="initial" control={control} />
+      </div>
+      <hr />
+      <div>
+        <ControledInput
+          label="测试textPost"
+          name="hasTextPost"
+          control={control}
+          textPost={'元'}
+        />
+      </div>
+    </div>
+  );
 };
+
+export default {
+  title: 'ControlAntdFormItem/ControledInput',
+  component: ControledInput,
+} as ComponentMeta<any>;

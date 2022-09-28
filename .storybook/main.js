@@ -1,31 +1,13 @@
-const path = require("path");
+const path = require('path');
 
 module.exports = {
-  core: {
-    builder: {
-      name: "webpack5",
-      options: {
-        lazyCompilation: true,
-        fsCache: true,
-      },
-    },
-  },
-  stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
+  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
-    {
-      name: "@storybook/addon-docs",
-      options: {
-        sourceLoaderOptions: {
-          injectStoryParameters: false,
-        },
-      },
-    },
-    "@storybook/addon-storysource",
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
   ],
-  framework: "@storybook/react",
+  framework: '@storybook/react',
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
     // You can change the configuration based on that.
@@ -34,11 +16,14 @@ module.exports = {
     // Make whatever fine-grained changes you need
     config.module.rules.push({
       test: /\.less$/,
-      use: ["style-loader", "css-loader", "less-loader"],
-      include: path.resolve(__dirname, "../"),
+      use: ['style-loader', 'css-loader', 'less-loader'],
+      include: path.resolve(__dirname, '../'),
     });
 
     // Return the altered config
     return config;
+  },
+  core: {
+    builder: '@storybook/builder-webpack5',
   },
 };

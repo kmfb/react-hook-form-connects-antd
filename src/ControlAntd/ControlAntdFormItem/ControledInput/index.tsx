@@ -1,7 +1,7 @@
-import { Input } from "antd";
-import React from "react";
-import FormItem from "../../../FormItem";
-import "./index.less";
+import React from 'react';
+import { Input } from 'antd';
+import FormItem from '../../../FormItem';
+import './index.less';
 
 interface Props {
   name: string;
@@ -41,8 +41,8 @@ function ControledInput(props: Props) {
 
   return (
     <div
-      className={`ControledInput hookForm ${className ? className : ""} ${
-        hasTextDecorator ? "textDecorator" : ""
+      className={`ControledInput hookForm ${className ? className : ''} ${
+        hasTextDecorator ? 'textDecorator' : ''
       }`}
     >
       {textPrefix && <div className="text-prefix">{textPrefix}</div>}
@@ -58,7 +58,7 @@ function ControledInput(props: Props) {
         {children ? children : <Input />}
       </FormItem>
       {(textCenter || textPost) && (
-        <div className={textCenter ? "text-center" : "text-post"}>
+        <div className={textCenter ? 'text-center' : 'text-post'}>
           {textCenter ? textCenter : textPost}
         </div>
       )}

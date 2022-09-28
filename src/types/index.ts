@@ -1,1 +1,1 @@
-export * from "./controlAntdForm";
+export * from './controlAntdForm';

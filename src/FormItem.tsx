@@ -1,24 +1,22 @@
-import React, { useRef, useEffect, useState } from "react";
-import ReactDOM from "react-dom";
-import { Form, Spin } from "antd";
+import React, { useEffect, useRef, useState } from 'react';
+import ReactDOM from 'react-dom';
 import {
-  useController,
-  ControllerProps,
   ControllerFieldState,
-} from "react-hook-form";
+  ControllerProps,
+  useController,
+} from 'react-hook-form';
+import { Form, Spin } from 'antd';
+import { FormItemProps } from 'antd/es/form';
+import { isFalsy } from './utils';
 
-import { FormItemProps } from "antd/es/form";
-
-import { isFalsy } from "./utils";
-
-type ChildrenComponentType = "select" | "input" | "";
+type ChildrenComponentType = 'select' | 'input' | '';
 
 export interface HooksFormItemProps extends FormItemProps {
-  name: ControllerProps["name"];
-  control: ControllerProps<any>["control"];
-  rules?: ControllerProps["rules"];
+  name: ControllerProps['name'];
+  control: ControllerProps<any>['control'];
+  rules?: ControllerProps['rules'];
   labelText?: string;
-  defaultValue?: ControllerProps["defaultValue"];
+  defaultValue?: ControllerProps['defaultValue'];
   valuePropName?: string;
   trigger?: string;
   getValueFromEvent?: (event: any) => any;
@@ -31,28 +29,28 @@ const getLayoutProps = ({ labelAlign, labelCol, wrapperCol }: any) => {
   const layoutProps: any = {};
 
   if (labelAlign) {
-    layoutProps["labelAlign"] = labelAlign;
+    layoutProps['labelAlign'] = labelAlign;
   }
 
   if (labelCol) {
-    layoutProps["labelCol"] = labelCol;
+    layoutProps['labelCol'] = labelCol;
   }
 
   if (wrapperCol) {
-    layoutProps["wrapperCol"] = wrapperCol;
+    layoutProps['wrapperCol'] = wrapperCol;
   }
 
   return layoutProps;
 };
 
 const getRules = (
-  rules: ControllerProps["rules"],
+  rules: ControllerProps['rules'],
   options: { required?: boolean | string; label: string }
 ) => {
   let newRules = { ...rules };
 
   if (options?.required) {
-    if (typeof options?.required === "string") {
+    if (typeof options?.required === 'string') {
       newRules.required = options.required;
     } else {
       newRules.required = `${options?.label}不能为空`;
@@ -63,14 +61,14 @@ const getRules = (
 };
 
 const getValidateStatus = (fieldState: ControllerFieldState) => {
-  let validateStatus: FormItemProps["validateStatus"] = "";
+  let validateStatus: FormItemProps['validateStatus'] = '';
 
   if (fieldState?.error) {
-    validateStatus = "error";
+    validateStatus = 'error';
   }
 
   if (fieldState.isDirty && !fieldState?.error) {
-    validateStatus = "success";
+    validateStatus = 'success';
   }
 
   return validateStatus;
@@ -91,7 +89,7 @@ const getPlaceholder = ({
 }) => {
   if (!isFalsy(metadata?.props.placeholder)) return metadata?.props.placeholder;
 
-  if (componentType === "select") {
+  if (componentType === 'select') {
     return `请选择${labelText}`;
   }
 
@@ -112,8 +110,8 @@ const InternalFormItem: React.FC<HooksFormItemProps> = (props) => {
     required,
     hasFeedback,
     style,
-    valuePropName = "value",
-    trigger = "onChange",
+    valuePropName = 'value',
+    trigger = 'onChange',
     getValueFromEvent,
     hostUIValueState,
     loading = false,
@@ -127,27 +125,27 @@ const InternalFormItem: React.FC<HooksFormItemProps> = (props) => {
    */
   const formItemRef = useRef();
   const [childrenComponentType, setChildrenComponentType] =
-    useState<ChildrenComponentType>("");
+    useState<ChildrenComponentType>('');
 
   const layoutProps = getLayoutProps({ labelCol, wrapperCol, labelAlign });
 
-  const isRequired = required || Object.keys(rules).includes("required");
+  const isRequired = required || Object.keys(rules).includes('required');
   const rulesProp = getRules(rules, { required, label: labelText as string });
 
   useEffect(() => {
     const dom = ReactDOM.findDOMNode(formItemRef.current) as Element;
     if (!dom) {
-      return () => {}
+      return () => {};
     }
-    const selectNodelist = dom.querySelectorAll(".ant-select");
+    const selectNodelist = dom.querySelectorAll('.ant-select');
 
     switch (true) {
       case selectNodelist.length > 0:
-        setChildrenComponentType("select");
+        setChildrenComponentType('select');
         break;
 
       default:
-        setChildrenComponentType("");
+        setChildrenComponentType('');
         break;
     }
   }, []);
@@ -208,11 +206,11 @@ const InternalFormItem: React.FC<HooksFormItemProps> = (props) => {
       return defaultProxyProps;
     }
     // @ts-expect-error
-    if (props.children.props["onBlur"]) {
+    if (props.children.props['onBlur']) {
       return {
         ...defaultProxyProps,
         // @ts-expect-error
-        onBlur: props.children.props["onBlur"],
+        onBlur: props.children.props['onBlur'],
       };
     }
 

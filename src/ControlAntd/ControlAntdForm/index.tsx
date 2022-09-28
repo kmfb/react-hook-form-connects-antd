@@ -1,18 +1,24 @@
-import { Form, Input } from "antd";
-import { ColProps } from "antd/lib/grid";
-import _ from "lodash";
-import React from "react";
-import { ControllerProps } from "react-hook-form";
-import FormItem from "../../FormItem";
-import { IChildrenProps, IControlAntdFormItem, IControlAntdFormItemChildren, IControlAntdFormItems, IOmitHooksFormItemProps } from "../../types";
-import { UD_FORM_LAYOUT } from "./constants";
+import React from 'react';
+import { ControllerProps } from 'react-hook-form';
+import { Form, Input } from 'antd';
+import { ColProps } from 'antd/lib/grid';
+import _ from 'lodash';
+import FormItem from '../../FormItem';
+import {
+  IChildrenProps,
+  IControlAntdFormItem,
+  IControlAntdFormItemChildren,
+  IControlAntdFormItems,
+  IOmitHooksFormItemProps,
+} from '../../types';
+import { UD_FORM_LAYOUT } from './constants';
 
 export interface ControlAntdFormProps {
   layout?: {
     labelCol?: ColProps;
     wrapperCol?: ColProps;
   };
-  control: ControllerProps<any>["control"];
+  control: ControllerProps<any>['control'];
   items: IControlAntdFormItems;
 }
 
@@ -25,19 +31,18 @@ const getChildrenByType = ({
   childrenProps: IChildrenProps | undefined;
   item: IOmitHooksFormItemProps;
 }) => {
-  const isFunctionChildren = _.isFunction(children)
+  const isFunctionChildren = _.isFunction(children);
 
-  const Component = isFunctionChildren ? children(item) : children
-  
+  const Component = isFunctionChildren ? children(item) : children;
+
   if (Component) {
     return React.cloneElement(Component, {
       ...childrenProps,
-    })
+    });
   }
 
-  return null
-
-}
+  return null;
+};
 
 function index(props: ControlAntdFormProps) {
   const { items, layout = UD_FORM_LAYOUT, control } = props;
@@ -48,9 +53,8 @@ function index(props: ControlAntdFormProps) {
     const childrenWithProps = getChildrenByType({
       children,
       childrenProps,
-      item: rest
-    })
-
+      item: rest,
+    });
 
     return (
       <FormItem {...layout} {...rest} control={control} key={rest.name}>

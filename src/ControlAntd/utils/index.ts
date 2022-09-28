@@ -1,1 +1,1 @@
-export { default as getFormItemsWithRequired } from "./getFormItemsWithRequired";
+export { default as getFormItemsWithRequired } from './getFormItemsWithRequired';

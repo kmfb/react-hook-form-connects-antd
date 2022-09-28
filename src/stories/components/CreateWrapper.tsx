@@ -1,5 +1,5 @@
-import React from "react";
-import FormProviderWrapper from "./FormProviderWrapper";
+import React from 'react';
+import FormProviderWrapper from './FormProviderWrapper';
 
 function CreateWrapper(childrenFuncComponent: any) {
   return (props: any) => {

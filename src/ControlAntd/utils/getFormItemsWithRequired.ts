@@ -1,15 +1,15 @@
-import { IControlAntdFormItems } from "../../types";
+import { IControlAntdFormItems } from '../../types';
 
 function getFormItemsWithRequired(
   items: IControlAntdFormItems,
   checkedNames: Array<string>,
-  mode: "reverse" | "normal" = "normal"
+  mode: 'reverse' | 'normal' = 'normal'
 ) {
   return items.map((item: any) => {
     const isIn = checkedNames.some((name: string) => item.name.endsWith(name));
     const isNotIn = !isIn;
 
-    const condition = mode === "reverse" ? isNotIn : isIn;
+    const condition = mode === 'reverse' ? isNotIn : isIn;
     if (condition) {
       return {
         ...item,

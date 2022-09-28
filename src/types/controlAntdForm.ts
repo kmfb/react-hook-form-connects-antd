@@ -1,7 +1,7 @@
-import { JSXElementConstructor, ReactElement } from "react";
-import { HooksFormItemProps } from "../FormItem";
+import { JSXElementConstructor, ReactElement } from 'react';
+import { HooksFormItemProps } from '../FormItem';
 
-export type IOmitHooksFormItemProps = Omit<HooksFormItemProps, "control">;
+export type IOmitHooksFormItemProps = Omit<HooksFormItemProps, 'control'>;
 export type IControlAntdFormItemChildren =
   | ReactElement<any, string | JSXElementConstructor<any>>
   | ((

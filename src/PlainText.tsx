@@ -1,5 +1,5 @@
-import React from "react";
-import { isString } from "./utils";
+import React from 'react';
+import { isString } from './utils';
 
 export interface IProps extends React.HTMLAttributes<HTMLSpanElement> {
   value?: string | undefined;
@@ -8,13 +8,13 @@ export interface IProps extends React.HTMLAttributes<HTMLSpanElement> {
 }
 
 const defaultGetDisplayValue = (value: string | undefined) =>
-  isString(value) ? value : value ? JSON.stringify(value) : "";
+  isString(value) ? value : value ? JSON.stringify(value) : '';
 
 const PlainText = React.forwardRef<any, IProps>((props, ref) => {
   const {
     value,
     hidePlaceholder = false,
-    placeholder = "-",
+    placeholder = '-',
     getDisplayValue = defaultGetDisplayValue,
     ...spanProps
   } = props;

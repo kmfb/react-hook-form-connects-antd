@@ -1,38 +1,38 @@
-import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
-import React, { useState } from "react";
-
+// or 'antd/dist/antd.less'
+import React, { useState } from 'react';
+import { useFieldArray, useForm } from 'react-hook-form';
 import {
-  Input,
-  Select,
-  Switch,
-  InputNumber,
-  Upload,
-  Rate,
-  Checkbox,
-  Radio,
-  Slider,
-  Table,
   Button,
-  Icon,
-  Tooltip,
-  Row,
+  Checkbox,
   Col,
-} from "antd";
-import { useForm, useFieldArray } from "react-hook-form";
+  Icon,
+  Input,
+  InputNumber,
+  Radio,
+  Rate,
+  Row,
+  Select,
+  Slider,
+  Switch,
+  Table,
+  Tooltip,
+  Upload,
+} from 'antd';
+import 'antd/dist/antd.css';
 // @ts-ignore
-import { Form, FormItem, PureFormItem, PlainText } from "../../index";
-import { FORM_ITEM_LAYOUT } from "../constants";
+import { Form, FormItem, PlainText, PureFormItem } from '../../index';
+import { FORM_ITEM_LAYOUT } from '../constants';
 
 const Demo = () => {
   const [formValue, setFormValue] = useState({});
   const [showMethodTip, triggerMethodTip] = useState(false);
 
   const { control, handleSubmit } = useForm({
-    mode: "onChange",
+    mode: 'onChange',
   });
 
   const { fields, append, remove } = useFieldArray({
-    name: "componentParams",
+    name: 'componentParams',
     control,
   });
 
@@ -82,15 +82,15 @@ const Demo = () => {
         >
           <Radio.Group
             options={[
-              { label: "restful", value: "restful" },
-              { label: "webservice", value: "webservice" },
-              { label: "页面", value: "页面" },
+              { label: 'restful', value: 'restful' },
+              { label: 'webservice', value: 'webservice' },
+              { label: '页面', value: '页面' },
             ]}
           />
         </FormItem>
 
         <PureFormItem label="调用地址" style={{ marginBottom: 0 }}>
-          <div style={{ display: "flex" }}>
+          <div style={{ display: 'flex' }}>
             <FormItem
               labelText="调用地址"
               name="address"
@@ -127,15 +127,15 @@ const Demo = () => {
         >
           <Radio.Group
             options={[
-              { label: "json", value: "json" },
-              { label: "xml", value: "xml" },
-              { label: "text", value: "text" },
+              { label: 'json', value: 'json' },
+              { label: 'xml', value: 'xml' },
+              { label: 'text', value: 'text' },
             ]}
           />
         </FormItem>
 
         <PureFormItem label="InputNumber" style={{ marginBottom: 0 }}>
-          <div style={{ display: "flex" }}>
+          <div style={{ display: 'flex' }}>
             <FormItem
               labelText="调用地址"
               name="input-number"
@@ -152,12 +152,12 @@ const Demo = () => {
         <FormItem label="Slider" name="Slider" control={control}>
           <Slider
             marks={{
-              0: "A",
-              20: "B",
-              40: "C",
-              60: "D",
-              80: "E",
-              100: "F",
+              0: 'A',
+              20: 'B',
+              40: 'C',
+              60: 'D',
+              80: 'E',
+              100: 'F',
             }}
           />
         </FormItem>
@@ -166,9 +166,9 @@ const Demo = () => {
           label="Slider"
           name="Slider"
           control={control}
-          defaultValue={["A", "B"]}
+          defaultValue={['A', 'B']}
         >
-          <Checkbox.Group style={{ width: "100%" }}>
+          <Checkbox.Group style={{ width: '100%' }}>
             <Row>
               <Col span={8}>
                 <Checkbox value="A">A</Checkbox>
@@ -201,7 +201,7 @@ const Demo = () => {
           control={control}
           valuePropName="fileList"
           getValueFromEvent={(e: any) => {
-            console.log("Upload event:", e);
+            console.log('Upload event:', e);
             if (Array.isArray(e)) {
               return e;
             }
@@ -221,7 +221,7 @@ const Demo = () => {
           control={control}
           valuePropName="fileList"
           getValueFromEvent={(e: any) => {
-            console.log("Upload event:", e);
+            console.log('Upload event:', e);
             if (Array.isArray(e)) {
               return e;
             }

@@ -1,25 +1,29 @@
-import { Modal } from "antd";
-import { ModalProps } from "antd/lib/modal";
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   ControllerProps,
   FormProvider,
   useFormContext,
   UseFormReturn,
-} from "react-hook-form";
-import FormValueDisplay from "../../FormValueDisplay";
-import { IControlAntdFormItems } from "../../types";
-import ControlAntdForm, { ControlAntdFormProps } from "../ControlAntdForm";
-import { UD_FORM_LAYOUT_MODAL } from "../ControlAntdForm/constants";
+} from 'react-hook-form';
+import { Modal } from 'antd';
+import { ModalProps } from 'antd/lib/modal';
+import FormValueDisplay from '../../FormValueDisplay';
+import { IControlAntdFormItems } from '../../types';
+import ControlAntdForm, { ControlAntdFormProps } from '../ControlAntdForm';
+import { UD_FORM_LAYOUT_MODAL } from '../ControlAntdForm/constants';
 
-type PickedControlAntdFormProps = Pick<ControlAntdFormProps, "layout">;
+type PickedControlAntdFormProps = Pick<ControlAntdFormProps, 'layout'>;
 
 interface IProps {
   children: React.ReactElement;
   modalChildren?: React.ReactElement;
   items?: IControlAntdFormItems;
   methods: UseFormReturn;
-  handleModalOk: (handler: { setConfirmLoading: any; setVisible: any, clearStatus: any }) => void;
+  handleModalOk: (handler: {
+    setConfirmLoading: any;
+    setVisible: any;
+    clearStatus: any;
+  }) => void;
   preserve?: boolean;
   modalConfig?: ModalProps;
   formConfig?: PickedControlAntdFormProps;
@@ -41,8 +45,8 @@ function index(props: IProps) {
 
   const finalFormConfig: PickedControlAntdFormProps = {
     layout: UD_FORM_LAYOUT_MODAL,
-    ...formConfig
-  }
+    ...formConfig,
+  };
 
   const { control, reset } = methods;
 
@@ -81,7 +85,6 @@ function index(props: IProps) {
 
   return (
     <div>
-     
       <div>{clonedChildren}</div>
       <FormProvider {...methods}>
         <Modal
@@ -89,11 +92,17 @@ function index(props: IProps) {
           onCancel={handleCancel}
           onOk={handleOk}
           confirmLoading={confirmLoading}
-          okText={"确定"}
-          cancelText={"取消"}
+          okText={'确定'}
+          cancelText={'取消'}
           {...modalConfig}
         >
-          {modalChildren || <ControlAntdForm control={control} items={items as any} {...finalFormConfig} />}
+          {modalChildren || (
+            <ControlAntdForm
+              control={control}
+              items={items as any}
+              {...finalFormConfig}
+            />
+          )}
           {isDev && <FormValueDisplay />}
         </Modal>
       </FormProvider>

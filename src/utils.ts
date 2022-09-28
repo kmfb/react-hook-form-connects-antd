@@ -9,5 +9,5 @@ export const isFalsy = (value: any) => {
 };
 
 export const isString = (value: unknown) => {
-  return typeof value === "string"
-}
+  return typeof value === 'string';
+};

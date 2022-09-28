@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { FormProvider, UseFormReturn } from 'react-hook-form';
 import { Modal } from 'antd';
 import { ModalProps } from 'antd/lib/modal';
-import FormValueDisplay from '../../FormValueDisplay';
 import { IControlAntdFormItems } from '../../types';
 import ControlAntdForm, { ControlAntdFormProps } from '../ControlAntdForm';
 import { UD_FORM_LAYOUT_MODAL } from '../ControlAntdForm/constants';
@@ -95,10 +94,10 @@ function Index(props: IProps) {
             <ControlAntdForm
               control={control}
               items={items as any}
+              isDev={isDev}
               {...finalFormConfig}
             />
           )}
-          {isDev && <FormValueDisplay />}
         </Modal>
       </FormProvider>
     </div>

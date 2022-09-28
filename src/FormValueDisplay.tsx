@@ -1,14 +1,26 @@
 import React from 'react';
-import { useFormContext, useWatch } from 'react-hook-form';
+import { ControllerProps, useFormContext, useWatch } from 'react-hook-form';
 
-function FormValueDisplay() {
-  const { control } = useFormContext();
+const getControl = (ctx: any, controlP: any) => {
+  if (ctx) {
+    return ctx.control;
+  }
+
+  return controlP;
+};
+
+function FormValueDisplay(props: {
+  control?: ControllerProps<any>['control'];
+}) {
+  debugger;
+  const { control: controlP } = props;
+  const ctx = useFormContext();
 
   const watchValues = useWatch({
-    control,
+    control: getControl(ctx, controlP),
   });
 
-  return <div>{JSON.stringify(watchValues)}</div>;
+  return <div>表单值：{JSON.stringify(watchValues)}</div>;
 }
 
 export default FormValueDisplay;

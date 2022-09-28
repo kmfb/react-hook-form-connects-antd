@@ -3,6 +3,7 @@ import { ControllerProps } from 'react-hook-form';
 import { Form, Input } from 'antd';
 import { ColProps } from 'antd/lib/grid';
 import _ from 'lodash';
+import { FormValueDisplay } from '../..';
 import FormItem from '../../FormItem';
 import {
   IChildrenProps,
@@ -20,6 +21,7 @@ export interface ControlAntdFormProps {
   };
   control: ControllerProps<any>['control'];
   items: IControlAntdFormItems;
+  isDev?: boolean;
 }
 
 const getChildrenByType = ({
@@ -45,7 +47,7 @@ const getChildrenByType = ({
 };
 
 function index(props: ControlAntdFormProps) {
-  const { items, layout = UD_FORM_LAYOUT, control } = props;
+  const { items, layout = UD_FORM_LAYOUT, control, isDev } = props;
 
   const renderItem = (item: IControlAntdFormItem) => {
     const { children, childrenProps, ...rest } = item;
@@ -64,7 +66,10 @@ function index(props: ControlAntdFormProps) {
   };
 
   return (
-    <Form>{items.map((item: IControlAntdFormItem) => renderItem(item))}</Form>
+    <div>
+      <Form>{items.map((item: IControlAntdFormItem) => renderItem(item))}</Form>
+      {isDev && <FormValueDisplay control={control} />}
+    </div>
   );
 }
 

@@ -7,6 +7,7 @@ import {
 } from 'react-hook-form';
 import { Form, Spin } from 'antd';
 import { FormItemProps } from 'antd/es/form';
+import _ from 'lodash';
 import { isFalsy } from './utils';
 
 type ChildrenComponentType = 'select' | 'input' | '';
@@ -19,7 +20,7 @@ export interface HooksFormItemProps extends FormItemProps {
   defaultValue?: ControllerProps['defaultValue'];
   valuePropName?: string;
   trigger?: string;
-  getValueFromEvent?: (_event: any) => any;
+  getValueFromEvent?: (..._args: any) => any;
   hostUIValueState?: (_value: any) => any;
   loading?: boolean;
 }
@@ -175,12 +176,12 @@ const InternalFormItem: React.FC<HooksFormItemProps> = (props) => {
 
   const defaultProxyProps = {
     [valuePropName]: field.value,
-    [trigger](event: any) {
-      let value = event;
-
-      if (getValueFromEvent) {
-        value = getValueFromEvent(event);
-      }
+    [trigger](...args: any) {
+      const value = getValueFromEvent
+        ? getValueFromEvent(...args)
+        : _.isArray(args)
+        ? args[0]
+        : null;
 
       field.onChange(value);
 
@@ -192,7 +193,7 @@ const InternalFormItem: React.FC<HooksFormItemProps> = (props) => {
       // @ts-expect-error
       if (props.children?.props?.[trigger]) {
         // @ts-expect-error
-        props.children!.props[trigger](...arguments);
+        props.children!.props[trigger](...args);
       }
     },
   };

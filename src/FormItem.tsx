@@ -217,6 +217,19 @@ const InternalFormItem: React.FC<HooksFormItemProps> = (props) => {
     return defaultProxyProps;
   };
 
+  useEffect(() => {
+    if (!field) {
+      return () => {};
+    }
+    if (!field.value) {
+      return () => {};
+    }
+
+    if (hostUIValueState) {
+      setUIValueState(hostUIValueState(field.value));
+    }
+  }, [field, hostUIValueState]);
+
   const FormItemInner = (
     <Form.Item
       {...antdProps}

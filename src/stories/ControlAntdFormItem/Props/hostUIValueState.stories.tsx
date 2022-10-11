@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Select } from 'antd';
 import { FormItem } from '../../..';
@@ -9,15 +9,22 @@ export const Index = () => {
   // import { useForm } from "react-hook-form";
   // import { FormItem } from "../../..";
 
-  const { control } = useForm();
+  const { control, reset } = useForm();
 
   const hostUIValueState = (v: any) => {
+    console.log(v, 'im v');
     if (v === null || v === undefined) {
       return undefined;
     }
 
     return v.slice(1);
   };
+
+  useEffect(() => {
+    reset({
+      componentName: 'jack',
+    });
+  }, [reset]);
 
   return (
     <div>

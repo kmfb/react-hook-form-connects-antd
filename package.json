@@ -1,6 +1,6 @@
 {
   "name": "@kmfb/react-hook-form-control-antd",
-  "version": "2.3.9",
+  "version": "2.3.10",
   "author": "kmfb",
   "homepage": "https://kmfb.github.io/react-hook-form-control-antd/",
   "scripts": {
@@ -85,5 +85,8 @@
       "npm run format",
       "git add ."
     ]
+  },
+  "dependencies": {
+    "use-deep-compare-effect": "^1.8.1"
   }
 }

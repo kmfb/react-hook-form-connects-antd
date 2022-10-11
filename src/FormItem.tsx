@@ -8,6 +8,7 @@ import {
 import { Form, Spin } from 'antd';
 import { FormItemProps } from 'antd/es/form';
 import _ from 'lodash';
+import useDeepCompareEffect from 'use-deep-compare-effect';
 import { isFalsy } from './utils';
 
 type ChildrenComponentType = 'select' | 'input' | '';
@@ -229,7 +230,8 @@ const InternalFormItem: React.FC<HooksFormItemProps> = (props) => {
     if (hostUIValueState) {
       setUIValueState(hostUIValueState(field.value));
     }
-  }, [field, hostUIValueState]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [field.value, hostUIValueState]);
 
   const FormItemInner = (
     <Form.Item

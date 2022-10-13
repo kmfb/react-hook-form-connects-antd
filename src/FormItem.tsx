@@ -24,6 +24,7 @@ export interface HooksFormItemProps extends FormItemProps {
   getValueFromEvent?: (..._args: any) => any;
   hostUIValueState?: (_value: any) => any;
   loading?: boolean;
+  isControllComp?: boolean;
 }
 
 // 如果直接赋值给 FormItem, 会导致 FormItem 里头 labelCol in props 的逻辑判断为 true， 从而使设置的布局未生效
@@ -98,6 +99,19 @@ const getPlaceholder = ({
   return `请输入${labelText}`;
 };
 
+const collectValueToUpper = (
+  value: any,
+  onChange: any,
+  isControllComp: boolean
+) => {
+  if (_.isUndefined(value)) {
+    if (isControllComp) {
+      onChange(null);
+    }
+  }
+  onChange(value);
+};
+
 const InternalFormItem: React.FC<HooksFormItemProps> = (props) => {
   const {
     name,
@@ -116,6 +130,7 @@ const InternalFormItem: React.FC<HooksFormItemProps> = (props) => {
     trigger = 'onChange',
     getValueFromEvent,
     hostUIValueState,
+    isControllComp = false,
     loading = false,
     ...antdProps
   } = props;
@@ -184,7 +199,7 @@ const InternalFormItem: React.FC<HooksFormItemProps> = (props) => {
         ? args[0]
         : null;
 
-      field.onChange(value);
+      collectValueToUpper(value, field.onChange, isControllComp);
 
       if (hostUIValueState) {
         const uValue = hostUIValueState(value);

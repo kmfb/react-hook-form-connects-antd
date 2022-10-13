@@ -107,6 +107,7 @@ const collectValueToUpper = (
   if (_.isUndefined(value)) {
     if (isControllComp) {
       onChange(null);
+      return false;
     }
   }
   onChange(value);

@@ -28,6 +28,8 @@ export const Basic = () => {
     {
       label: 'Name',
       name: 'name',
+      isPure: true,
+      required: true,
       rules: {
         maxLength: { value: 10, message: '模板名称字符长度不能超过10个' },
         required: { value: true, message: '请输入模板名称' },

@@ -4,7 +4,7 @@ import { Form, Input } from 'antd';
 import { ColProps } from 'antd/lib/grid';
 import _ from 'lodash';
 import { FormValueDisplay } from '../..';
-import FormItem from '../../FormItem';
+import FormItem, { PureFormItem } from '../../FormItem';
 import {
   IChildrenProps,
   IControlAntdFormItem,
@@ -50,7 +50,7 @@ function index(props: ControlAntdFormProps) {
   const { items, layout = UD_FORM_LAYOUT, control, isDev } = props;
 
   const renderItem = (item: IControlAntdFormItem) => {
-    const { children, childrenProps, ...rest } = item;
+    const { children, childrenProps, isPure, ...rest } = item;
 
     const childrenWithProps = getChildrenByType({
       children,
@@ -58,10 +58,12 @@ function index(props: ControlAntdFormProps) {
       item: rest,
     });
 
+    const FormItemComp = isPure ? PureFormItem : FormItem;
+
     return (
-      <FormItem {...layout} {...rest} control={control} key={rest.name}>
+      <FormItemComp {...layout} {...rest} control={control} key={rest.name}>
         {childrenWithProps || <Input {...childrenProps} />}
-      </FormItem>
+      </FormItemComp>
     );
   };
 

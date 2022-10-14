@@ -13,6 +13,7 @@ export type IChildrenProps = {
 };
 
 export interface IControlAntdFormItem extends IOmitHooksFormItemProps {
+  isPure?: boolean;
   children?: IControlAntdFormItemChildren;
   childrenProps?: IChildrenProps;
 }

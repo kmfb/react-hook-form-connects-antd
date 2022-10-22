@@ -16,6 +16,22 @@
 
 # react-hook-form-control-antd
 
+## 还在被 antdv3 表单 api 折磨吗？
+
+- 还记得被 getFieldDecorator, Form.create 支配的恐惧吗？
+- 还记得被各种表单联动，动态增添表单项，繁琐的逻辑支配的恐惧吗？
+- 还记得不能使用 react 最新特性 hooks 的烦恼吗？
+
+你是否无数次想过把整个表单 api 干掉，像重生动漫一样，换一种更优雅的方式生活？
+
+我想过，所以我找到了一个库[react-hook-form-with-antd](https://github.com/linewell-zwfed/react-hook-form-with-antd)，正好干了这档子事, 将优雅的表单库[react-hook-form](https://react-hook-form.com/api)与 antd 的~~优雅~~的 ui 结合起来。
+
+把 antd 丑陋的表单 api 摈弃掉，使用 hooks 的方法来写表单业务组件，从此世界就亮了起来（从 antdv3 转到 v4 的人应该懂我在说什么）。
+
+后面我不满足这个库的一些问题，自己 fork 下了，~~完善~~了这个库，~~添加~~了一些新特性。希望对于 antd 表单 api 被折磨的人有所帮助。
+
+## 项目说明
+
 [antd 3.x 版本](https://ant-design-3x.gitee.io/components/form-cn/) 中的表单不支持 react hooks 的使用方式并且存在一定的[性能问题](https://github.com/ant-design/ant-design/issues?q=form+%E5%8D%A1%E9%A1%BF)，而 react-hook-form 又在社区广受好评，在实际项目中也能够同 antd 很好的结合使用。但 [antd Form](https://ant-design-3x.gitee.io/components/form-cn/) 组件中的 Form.Item 只适配了 rc-form，即能够根据 rc-form 的 `getFieldDecorator` 中的 `required`、`rules` 属性自动设置 Form.Item 的 `validateStatus`、`help`。所以创建了该组件用于连接 antd 的 Form.Item 和 react-hook-form。
 
 使用该组件前，请先熟悉如何使用 [react-hook-form](https://react-hook-form.com/get-started#Quickstart)。
@@ -179,3 +195,7 @@ import {
 ## 文档
 
 https://kmfb.github.io/react-hook-form-control-antd/
+
+## 鸣谢
+
+[react-hook-form-with-antd](https://github.com/linewell-zwfed/react-hook-form-with-antd)

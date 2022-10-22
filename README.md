@@ -26,9 +26,9 @@
 
 我想过，所以我找到了一个库[react-hook-form-with-antd](https://github.com/linewell-zwfed/react-hook-form-with-antd)，正好干了这档子事, 将优雅的表单库[react-hook-form](https://react-hook-form.com/api)与 antd 的~~优雅~~的 ui 结合起来。
 
-把 antd 丑陋的表单 api 摈弃掉，使用 hooks 的方法来写表单业务组件，从此世界就亮了起来（从 antdv3 转到 v4 的人应该懂我在说什么）。
+把 antd ~~丑陋~~的表单 api ~~摈弃~~掉，使用 hooks 的方法来写表单业务组件，从此世界就亮了起来（从 antdv3 转到 v4 的人应该懂我在说什么）。
 
-后面我不满足这个库的一些问题，自己 fork 下了，~~完善~~了这个库，~~添加~~了一些新特性。希望对于 antd 表单 api 被折磨的人有所帮助。
+后面我不满足这个库的一些~~问题~~，自己 fork 下了，~~完善~~了这个库，~~添加~~了一些新特性。希望对于 antd 表单 api 被折磨的人有所帮助。
 
 ## 项目说明
 

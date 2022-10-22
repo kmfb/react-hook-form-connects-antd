@@ -36,13 +36,13 @@
 
 使用该组件前，请先熟悉如何使用 [react-hook-form](https://react-hook-form.com/get-started#Quickstart)。
 
-## 快速上手
-
 ### 与 react-hook-form-with-antd 的区别
 
 1. 构建及文档测试工具修改为社区常用的 rollup 与 storybook，减少了组件依赖，提高了配置易读、易用性，增加了组件测试功能。
 2. 增加了 [ControlAntdForm 等](https://kmfb.github.io/react-hook-form-control-antd/)组件，其对 antd 及 react-hook-form 进行了进一步封装，提高了易用性及封装性，增加代码复用性。
 3. 增加了 github actions 的 CI/CD 功能，发版流程更加便利，无缝。
+
+## 快速上手
 
 ### 安装
 

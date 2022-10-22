@@ -1,8 +1,8 @@
 <p>
 
-<div style="display: flex; flex-direction: column; align-items: center; row-gap: 20px">
-<img src="https://raw.githubusercontent.com/react-hook-form/react-hook-form/master/docs/logo.png" >
-<img src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" style="width: 200px" >
+<div>
+<p align="center"><img src="https://raw.githubusercontent.com/react-hook-form/react-hook-form/master/docs/logo.png" ></p>
+<p align="center"><img src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" style="width: 200px" ></p>
 </div>
 
 <p align="center" style="margin-top: 20px">

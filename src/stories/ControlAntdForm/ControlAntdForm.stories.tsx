@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { Button, Input } from 'antd';
 import { ControlAntdForm } from '../..';
@@ -24,11 +24,12 @@ export const Basic = () => {
   // import { IControlAntdFormItems } from "../../types";
   // import { ControlAntdForm } from "../..";
 
+  const inputRef = useRef<any>();
+
   const items: IControlAntdFormItems = [
     {
       label: 'Name',
       name: 'name',
-      isPure: true,
       required: true,
       rules: {
         maxLength: { value: 10, message: '模板名称字符长度不能超过10个' },
@@ -36,9 +37,10 @@ export const Basic = () => {
       },
       children: (
         <Input
+          ref={inputRef}
           placeholder="请输入模板名称"
           onBlur={(e) => {
-            console.log('onBlur', e.target.value);
+            console.log('onBlur', inputRef.current);
           }}
         />
       ),
@@ -53,11 +55,53 @@ export const Basic = () => {
     },
     {
       label: 'address',
-      name: 'address',
+      name: 'address1',
+    },
+    {
+      label: 'address',
+      name: 'address2',
+    },
+    {
+      label: 'address',
+      name: 'address3',
+    },
+    {
+      label: 'address',
+      name: 'address4',
+    },
+    {
+      label: 'address',
+      name: 'address5',
+    },
+    {
+      label: 'address',
+      name: 'address6',
+    },
+    {
+      label: 'address',
+      name: 'address7',
+    },
+    {
+      label: 'address',
+      name: 'address8',
+    },
+    {
+      label: 'address',
+      name: 'address9',
+    },
+    {
+      label: 'address',
+      name: 'address10',
+    },
+    {
+      label: 'address',
+      name: 'addres1',
     },
   ];
 
-  const { control, handleSubmit } = useForm();
+  const { control, handleSubmit } = useForm({
+    shouldFocusError: true,
+  });
 
   const handleOnClick = () => {
     handleSubmit((values: any) => {

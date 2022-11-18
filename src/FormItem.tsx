@@ -175,6 +175,8 @@ const InternalFormItem: React.FC<HooksFormItemProps> = (props) => {
     defaultValue,
   });
 
+  const { ref } = field;
+
   const [UIValueState, setUIValueState] = useState(() => {
     if (field) {
       if (hostUIValueState) {
@@ -249,6 +251,8 @@ const InternalFormItem: React.FC<HooksFormItemProps> = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [field.value, hostUIValueState]);
 
+  console.log(props.children, 'im props.children');
+
   const FormItemInner = (
     <Form.Item
       {...antdProps}
@@ -263,7 +267,21 @@ const InternalFormItem: React.FC<HooksFormItemProps> = (props) => {
     >
       {React.cloneElement(props.children as React.ReactElement, {
         ..._.omit(field, ['ref']),
+        ref: (e: any) => {
+          ref(e);
 
+          debugger;
+
+          if (!props.children) {
+            return;
+          }
+
+          const c: any = props.children;
+
+          if (_.isObject(c.ref)) {
+            c.ref.current = e;
+          }
+        },
         ...getProxyProps(),
         placeholder,
         ...(hostUIValueState && {

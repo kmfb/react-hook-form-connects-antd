@@ -270,9 +270,7 @@ const InternalFormItem: React.FC<HooksFormItemProps> = (props) => {
         ref: (e: any) => {
           ref(e);
 
-          debugger;
-
-          if (!props.children) {
+          if (!_.isObject(props.children)) {
             return;
           }
 

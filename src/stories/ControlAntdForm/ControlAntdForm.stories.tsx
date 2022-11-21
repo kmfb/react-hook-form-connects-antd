@@ -30,11 +30,11 @@ export const Basic = () => {
     {
       label: 'Name',
       name: 'name',
-      required: true,
-      rules: {
-        maxLength: { value: 10, message: '模板名称字符长度不能超过10个' },
-        required: { value: true, message: '请输入模板名称' },
-      },
+      // required: true,
+      // rules: {
+      //   maxLength: { value: 10, message: '模板名称字符长度不能超过10个' },
+      //   required: { value: true, message: '请输入模板名称' },
+      // },
       children: (
         <Input
           ref={inputRef}
@@ -48,6 +48,10 @@ export const Basic = () => {
     {
       label: 'age',
       name: 'age',
+      rules: {
+        maxLength: { value: 10, message: '模板名称字符长度不能超过10个' },
+        required: { value: true, message: '请输入模板名称' },
+      },
       children: (item) => {
         console.log(item, 'im item');
         return <Input />;
@@ -56,6 +60,10 @@ export const Basic = () => {
     {
       label: 'address',
       name: 'address1',
+      // rules: {
+      //   maxLength: { value: 10, message: '模板名称字符长度不能超过10个' },
+      //   required: { value: true, message: '请输入模板名称' },
+      // },
     },
     {
       label: 'address',
@@ -99,9 +107,7 @@ export const Basic = () => {
     },
   ];
 
-  const { control, handleSubmit } = useForm({
-    shouldFocusError: true,
-  });
+  const { control, handleSubmit } = useForm();
 
   const handleOnClick = () => {
     handleSubmit((values: any) => {

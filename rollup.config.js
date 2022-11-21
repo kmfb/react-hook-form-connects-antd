@@ -29,7 +29,9 @@ export default [
         exclude: ['**/__tests__', '**/*.test.ts'],
       }),
       terser({
-        drop_console: true,
+        compress: {
+          drop_console: true,
+        },
       }),
     ],
   },

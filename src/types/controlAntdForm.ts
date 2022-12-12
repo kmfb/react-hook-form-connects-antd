@@ -14,6 +14,8 @@ export type IChildrenProps = {
 
 export interface IControlAntdFormItem extends IOmitHooksFormItemProps {
   isPure?: boolean;
+  isView?: boolean;
+  transformValueToView?: (value: any) => any;
   children?: IControlAntdFormItemChildren;
   childrenProps?: IChildrenProps;
 }

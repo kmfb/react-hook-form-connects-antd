@@ -12,7 +12,6 @@ const getControl = (ctx: any, controlP: any) => {
 function FormValueDisplay(props: {
   control?: ControllerProps<any>['control'];
 }) {
-  debugger;
   const { control: controlP } = props;
   const ctx = useFormContext();
 

@@ -2,12 +2,14 @@ import React, { forwardRef } from 'react';
 import { useFormContext, UseFormReturn } from 'react-hook-form';
 import isString from 'lodash/isString';
 
+export type transformValueToViewT = (
+  value: any,
+  currData: any,
+  dataFromServer: any
+) => any;
+
 interface IViewFormItemProps {
-  transformValueToView?: (
-    value: any,
-    currData: any,
-    dataFromServer: any
-  ) => any;
+  transformValueToView?: transformValueToViewT;
   name: string;
   methods: UseFormReturn<any>;
   value?: any;

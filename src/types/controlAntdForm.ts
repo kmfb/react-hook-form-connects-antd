@@ -1,4 +1,5 @@
 import { JSXElementConstructor, ReactElement } from 'react';
+import { transformValueToViewT } from '../components/ViewFormItem';
 import { HooksFormItemProps } from '../FormItem';
 
 export type IOmitHooksFormItemProps = Omit<HooksFormItemProps, 'control'>;
@@ -15,7 +16,7 @@ export type IChildrenProps = {
 export interface IControlAntdFormItem extends IOmitHooksFormItemProps {
   isPure?: boolean;
   isView?: boolean;
-  transformValueToView?: (value: any) => any;
+  transformValueToView?: transformValueToViewT;
   children?: IControlAntdFormItemChildren;
   childrenProps?: IChildrenProps;
 }

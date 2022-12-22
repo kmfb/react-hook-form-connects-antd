@@ -283,7 +283,7 @@ const InternalFormItem: React.FC<HooksFormItemProps> = (props) => {
         ...getProxyProps(),
         placeholder,
         ...(hostUIValueState && {
-          value: UIValueState,
+          [valuePropName]: UIValueState,
         }),
       })}
     </Form.Item>

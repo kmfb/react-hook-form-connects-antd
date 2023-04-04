@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
 import { useFormContext, UseFormReturn } from 'react-hook-form';
+import _ from 'lodash';
 import isString from 'lodash/isString';
 
 export type transformValueToViewT = (
@@ -16,6 +17,9 @@ interface IViewFormItemProps {
 }
 const ViewFormItem = forwardRef<HTMLDivElement, IViewFormItemProps>(
   (props, ref) => {
+    if (_.isNil(props.value)) {
+      return <></>;
+    }
     const { getValues } = props.methods;
 
     const dataFromServer = getValues('$dataFromServer');

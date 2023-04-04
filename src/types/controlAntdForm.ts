@@ -19,6 +19,7 @@ export interface IControlAntdFormItem extends IOmitHooksFormItemProps {
   transformValueToView?: transformValueToViewT;
   children?: IControlAntdFormItemChildren;
   childrenProps?: IChildrenProps;
+  display?: 'none' | undefined;
 }
 
 export type IControlAntdFormItems = Array<IControlAntdFormItem>;

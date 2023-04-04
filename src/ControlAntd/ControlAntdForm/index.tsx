@@ -80,7 +80,11 @@ function index(props: ControlAntdFormProps) {
 
   return (
     <div>
-      <Form>{items.map((item: IControlAntdFormItem) => renderItem(item))}</Form>
+      <Form>
+        {items
+          .filter((item) => item.display !== 'none')
+          .map((item: IControlAntdFormItem) => renderItem(item))}
+      </Form>
       {isDev && <FormValueDisplay control={control} />}
     </div>
   );

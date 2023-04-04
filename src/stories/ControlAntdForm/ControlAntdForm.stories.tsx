@@ -30,6 +30,7 @@ export const Basic = () => {
     {
       label: 'Name',
       name: 'name',
+      display: 'none',
       // required: true,
       // rules: {
       //   maxLength: { value: 10, message: '模板名称字符长度不能超过10个' },

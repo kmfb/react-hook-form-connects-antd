@@ -18,6 +18,7 @@ interface Props {
   trigger?: any;
   secondTrigger?: string;
   customOnChange?: any;
+  valuePropName?: string;
 }
 
 function ControledInput(props: Props) {
@@ -33,6 +34,7 @@ function ControledInput(props: Props) {
     children,
     className,
     rules,
+    valuePropName = 'value',
     trigger,
   } = props;
 
@@ -54,6 +56,7 @@ function ControledInput(props: Props) {
         control={control}
         rules={rules}
         trigger={trigger}
+        valuePropName={valuePropName}
       >
         {children ? children : <Input />}
       </FormItem>

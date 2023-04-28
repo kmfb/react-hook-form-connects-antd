@@ -19,6 +19,7 @@ interface Props {
   secondTrigger?: string;
   customOnChange?: any;
   valuePropName?: string;
+  getValueFromEvent?: any;
 }
 
 function ControledInput(props: Props) {
@@ -36,6 +37,7 @@ function ControledInput(props: Props) {
     rules,
     valuePropName = 'value',
     trigger,
+    getValueFromEvent,
   } = props;
 
   const n = decorator ? `${decorator}#${name}` : name;
@@ -57,6 +59,7 @@ function ControledInput(props: Props) {
         rules={rules}
         trigger={trigger}
         valuePropName={valuePropName}
+        getValueFromEvent={getValueFromEvent}
       >
         {children ? children : <Input />}
       </FormItem>

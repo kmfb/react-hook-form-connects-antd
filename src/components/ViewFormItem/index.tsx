@@ -17,7 +17,7 @@ interface IViewFormItemProps {
 }
 const ViewFormItem = forwardRef<HTMLDivElement, IViewFormItemProps>(
   (props, ref) => {
-    if (_.isNil(props.value)) {
+    if (_.isNil(props.value) && !props.transformValueToView) {
       return <></>;
     }
     const { getValues } = props.methods;

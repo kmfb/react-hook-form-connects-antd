@@ -48,7 +48,13 @@ function Index(props: IProps) {
   const [confirmLoading, setConfirmLoading] = useState(false);
 
   const clonedChildren = React.cloneElement(children, {
-    onClick: () => setVisible(true),
+    onClick: () => {
+      if (children.props.onClick) {
+        children.props.onClick();
+        return;
+      }
+      setVisible(true);
+    },
   });
 
   const resetFormValues = () => {

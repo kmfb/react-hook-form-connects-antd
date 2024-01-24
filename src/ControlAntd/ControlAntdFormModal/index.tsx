@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FormProvider, UseFormReturn } from 'react-hook-form';
 import { Modal } from 'antd';
 import { ModalProps } from 'antd/lib/modal';
+import _ from 'lodash';
 import { IControlAntdFormItems } from '../../types';
 import ControlAntdForm, { ControlAntdFormProps } from '../ControlAntdForm';
 import { UD_FORM_LAYOUT_MODAL } from '../ControlAntdForm/constants';
@@ -79,8 +80,11 @@ function Index(props: IProps) {
     });
   };
 
-  const handleCancel = () => {
+  const handleCancel = (e: any) => {
     clearStatus();
+    if (modalConfig?.onCancel) {
+      modalConfig.onCancel(e);
+    }
   };
 
   return (
@@ -94,7 +98,7 @@ function Index(props: IProps) {
           confirmLoading={confirmLoading}
           okText={'确定'}
           cancelText={'取消'}
-          {...modalConfig}
+          {..._.omit(modalConfig, ['onCancel'])}
         >
           {modalChildren || (
             <ControlAntdForm

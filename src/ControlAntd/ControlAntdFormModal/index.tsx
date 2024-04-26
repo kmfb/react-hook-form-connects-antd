@@ -80,6 +80,8 @@ function Index(props: IProps) {
     });
   };
 
+  const debouncedHandleOk = _.debounce(handleOk, 200);
+
   const handleCancel = (e: any) => {
     clearStatus();
     if (modalConfig?.onCancel) {
@@ -94,7 +96,7 @@ function Index(props: IProps) {
         <Modal
           visible={visible}
           onCancel={handleCancel}
-          onOk={handleOk}
+          onOk={debouncedHandleOk}
           confirmLoading={confirmLoading}
           okText={'确定'}
           cancelText={'取消'}

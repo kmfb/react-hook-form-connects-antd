@@ -32,7 +32,7 @@ export const Basic = () => {
         items={items}
         isDev
         handleModalOk={({ setConfirmLoading, setVisible }) => {
-          setConfirmLoading(true);
+          // setConfirmLoading(true);
           setVisible(false);
           console.log('handleModalOk');
         }}
@@ -47,7 +47,7 @@ export const Basic = () => {
         methods={methods}
         items={items}
         handleModalOk={({ setConfirmLoading, setVisible }) => {
-          setConfirmLoading(true);
+          // setConfirmLoading(true);
           setVisible(false);
           console.log('handleModalOk');
         }}

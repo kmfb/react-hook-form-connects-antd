@@ -1,6 +1,7 @@
 import React from 'react';
 import { ControllerProps, UseFormReturn } from 'react-hook-form';
 import { Form, Input } from 'antd';
+import { FormProps } from 'antd/es/form';
 import { ColProps } from 'antd/lib/grid';
 import _ from 'lodash';
 import ViewFormItem from '../../components/ViewFormItem';
@@ -16,6 +17,7 @@ import {
 import { UD_FORM_LAYOUT } from './constants';
 
 export interface ControlAntdFormProps {
+  FormProps?: FormProps;
   layout?: {
     labelCol?: ColProps;
     wrapperCol?: ColProps;
@@ -80,7 +82,7 @@ function index(props: ControlAntdFormProps) {
 
   return (
     <div>
-      <Form>
+      <Form {...props.FormProps}>
         {items
           .filter((item) => item.display !== 'none')
           .map((item: IControlAntdFormItem) => renderItem(item))}
